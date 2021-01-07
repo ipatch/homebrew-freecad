@@ -5,15 +5,22 @@ class Pyside2 < Formula
   version "5.15.2"
   head "http://code.qt.io/cgit/pyside/pyside-setup.git", :branch => "5.15.2"
 
-  depends_on "freecad/freecad/python3.9" => :build
+  option "with-ccache", "Build using ccache compilers"
+
+  # depends_on "freecad/freecad/python3.9" => :build
+  depends_on "python@3.9" => :build
 
   option "without-docs", "Skip building documentation"
 
   depends_on "cmake" => :build
   depends_on "sphinx-doc" => :build if build.with? "docs"
-  depends_on "freecad/freecad/qt5152"
+  # depends_on "freecad/freecad/qt5152"
+  depends_on "qt"
 
-  depends_on "FreeCAD/freecad/shiboken2" 
+  # depends_on "FreeCAD/freecad/shiboken2" 
+  depends_on "freecad/freecad/shiboken2"
+
+
 
   bottle do
     root_url "https://dl.bintray.com/vejmarie/freecad"
@@ -23,17 +30,33 @@ class Pyside2 < Formula
   end
 
   def install
+
+        if build.with?("ccache")
+      ENV["CC"] = Formula["ccache"].libexec/"cc"
+      ENV["CXX"] = Formula["ccache"].libexec/"c++"
+      ENV["CCACHE_DIR"] = "/usr/local/var/cache/.ccache/homebrew/pyside"
+    else
+      # NOTE: brew clang compilers req, Xcode nowork on macOS 10.13 or 10.14
+      if MacOS.version <= :mojave
+        ENV["CC"] = Formula["llvm"].opt_bin/"clang"
+        ENV["CXX"] = Formula["llvm"].opt_bin/"clang++"
+      end
+    end
+
     ENV.cxx11
 
     # This is a workaround for current problems with Shiboken2
-    ENV["HOMEBREW_INCLUDE_PATHS"] = ENV["HOMEBREW_INCLUDE_PATHS"].sub(Formula["freecad/freecad/qt5152"].include, "")
+    # ENV["HOMEBREW_INCLUDE_PATHS"] = ENV["HOMEBREW_INCLUDE_PATHS"].sub(Formula["freecad/freecad/qt5152"].include, "")
+     ENV["HOMEBREW_INCLUDE_PATHS"] = ENV["HOMEBREW_INCLUDE_PATHS"].sub(Formula["qt"].include, "")
+
+    
 
     rm buildpath/"sources/pyside2/doc/CMakeLists.txt" if build.without? "docs"
-    qt = Formula["freecad/freecad/qt5152"]
+    qt = Formula["qt"]
 
     # Add out of tree build because one of its deps, shiboken, itself needs an
     # out of tree build in shiboken.rb.
-    pyhome = `#{Formula["freecad/freecad/python3.9"].opt_bin}/python3.9-config --prefix`.chomp
+    pyhome = `#{Formula["python@3.9"].opt_bin}/python3.9-config --prefix`.chomp
     py_library = "#{pyhome}/lib/libpython3.9.dylib"
     py_include = "#{pyhome}/include/python3.9"
 
