@@ -25,6 +25,7 @@ class Shiboken2 < Formula
     # qt = Formula["freecad/freecad/qt5152"]
     qt = Formula["qt"]
 
+    ENV.cxx11
     ENV["LLVM_INSTALL_DIR"] = Formula["llvm"].opt_prefix
 
     # nowork

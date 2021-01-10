@@ -31,7 +31,7 @@ class Pyside2 < Formula
 
   def install
 
-        if build.with?("ccache")
+    if build.with?("ccache")
       ENV["CC"] = Formula["ccache"].libexec/"cc"
       ENV["CXX"] = Formula["ccache"].libexec/"c++"
       ENV["CCACHE_DIR"] = "/usr/local/var/cache/.ccache/homebrew/pyside"
@@ -49,7 +49,6 @@ class Pyside2 < Formula
     # ENV["HOMEBREW_INCLUDE_PATHS"] = ENV["HOMEBREW_INCLUDE_PATHS"].sub(Formula["freecad/freecad/qt5152"].include, "")
      ENV["HOMEBREW_INCLUDE_PATHS"] = ENV["HOMEBREW_INCLUDE_PATHS"].sub(Formula["qt"].include, "")
 
-    
 
     rm buildpath/"sources/pyside2/doc/CMakeLists.txt" if build.without? "docs"
     qt = Formula["qt"]
