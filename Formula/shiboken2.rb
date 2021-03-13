@@ -10,7 +10,7 @@ class Shiboken2 < Formula
   # depends_on "freecad/freecad/numpy@1.19.4"
   depends_on "numpy"
   # depends_on "freecad/freecad/qt5152"
-  depends_on "qt"
+  depends_on "qt@5"
   # depends_on "freecad/freecad/python3.9" => :build
   depends_on "python@3.9" => :build
 
@@ -23,7 +23,7 @@ class Shiboken2 < Formula
 
   def install
     # qt = Formula["freecad/freecad/qt5152"]
-    qt = Formula["qt"]
+    qt = Formula["qt@5"]
 
     ENV.cxx11
     ENV["LLVM_INSTALL_DIR"] = Formula["llvm"].opt_prefix
