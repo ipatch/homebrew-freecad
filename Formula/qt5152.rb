@@ -28,6 +28,7 @@ class Qt5152 < Formula
   depends_on "pkg-config" => :build
   depends_on xcode: :build
   depends_on macos: :sierra
+  depends_on "#{@tap}/icu4c@67.1" => :build
 
   uses_from_macos "bison"
   uses_from_macos "flex"
