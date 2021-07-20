@@ -7,6 +7,7 @@ The primary and frequent use case for this formula is for developers to convenie
 #### NOTE: If you are looking for the current macOS builds, please download the latest build from [GitHub](https://github.com/FreeCAD/FreeCAD/releases)
 
 ## Prerequisites
+
 Install [homebrew](http://brew.sh)
 
 ## Installing FreeCAD dependencies (FreeCAD developers)
