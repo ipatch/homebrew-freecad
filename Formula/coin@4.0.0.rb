@@ -19,7 +19,6 @@ class CoinAT400 < Formula
     url "https://github.com/coin3d/coin.git", branch: "master"
   end
 
-
   keg_only "provided by homebrew"
 
   option "with-docs",       "Install documentation"
