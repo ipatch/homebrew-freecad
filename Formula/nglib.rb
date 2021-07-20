@@ -2,7 +2,7 @@ class Nglib < Formula
   desc "C++ Library of NETGEN's tetrahedral mesh generator"
   homepage "https://github.com/ngsolve/netgen"
   url "https://github.com/ngsolve/netgen.git",
-    tag: "v6.2.2007",
+    tag:      "v6.2.2007",
     revision: "9d71c172f33b62c18afa32fd90b836a3a7a0fc26"
   license "LGPL-2.1"
   head "https://github.com/ngsolve/netgen.git"
