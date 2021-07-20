@@ -1,7 +1,7 @@
 class Elmer < Formula
   desc "CFD"
   homepage "https://www.csc.fi/web/elmer"
-  version "v10pre"
+  version "10pre"
   license "GPL-2.0-only"
   head "https://github.com/ElmerCSC/elmerfem.git", branch: "devel", shallow: false
 
@@ -34,7 +34,10 @@ class Elmer < Formula
 
     args << "-DQWT_INCLUDE_DIR:STRING="+Formula["freecad/freecad/qwtelmer"].opt_prefix+"/lib/qwt.framework/Versions/Current/Headers/"
     args << "-DQWT_LIBRARY:STRING="+Formula["freecad/freecad/qwtelmer"].opt_prefix+"/lib/qwt.framework/Versions/Current/qwt"
-    args << '-DCMAKE_PREFIX_PATH="' + Formula["freecad/freecad/qt5152"].opt_prefix + "/lib/cmake;" + Formula["freecad/freecad/vtk@8.2.0"].opt_prefix + "/lib/cmake;" + Formula["freecad/freecad/opencascade@7.5.0"].opt_prefix + "/lib/cmake;"+ '" -DCMAKE_C_FLAGS="-F' + Formula["freecad/freecad/qwtelmer"].opt_prefix+"/lib/" + ' -framework qwt"'
+    args << '-DCMAKE_PREFIX_PATH="' + Formula["freecad/freecad/qt5152"].opt_prefix + "/lib/cmake;" 
+    + Formula["freecad/freecad/vtk@8.2.0"].opt_prefix + "/lib/cmake;" 
+    + Formula["freecad/freecad/opencascade@7.5.0"].opt_prefix + "/lib/cmake;"
+    + '" -DCMAKE_C_FLAGS="-F' + Formula["freecad/freecad/qwtelmer"].opt_prefix+"/lib/" + ' -framework qwt"'
 
     mkdir "Build" do
       system "cmake", *args, ".."

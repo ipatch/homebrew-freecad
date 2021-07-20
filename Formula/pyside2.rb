@@ -2,10 +2,10 @@ class Pyside2 < Formula
   desc "Python bindings for Qt5 and greater"
   homepage "https://wiki.qt.io/PySide2"
   url "http://code.qt.io/cgit/pyside/pyside-setup.git",
-    tag: "v5.15.2",
+    tag:      "v5.15.2",
     revision: "ef19637b7eab165accb8c3b0686061b21745ab74"
   license all_of: ["GFDL-1.3-only", "GPL-2.0-only", "GPL-3.0-only", "LGPL-2.1-only", "LGPL-3.0-only"]
-  head "http://code.qt.io/cgit/pyside/pyside-setup.git", branch: "v5.15.2"   
+  head "http://code.qt.io/cgit/pyside/pyside-setup.git", branch: "v5.15.2"
 
   bottle do
     root_url "https://justyour.parts:8080/freecad"
@@ -30,7 +30,7 @@ class Pyside2 < Formula
     ENV["HOMEBREW_INCLUDE_PATHS"] = ENV["HOMEBREW_INCLUDE_PATHS"].sub(Formula["#{@tap}/qt5152"].include, "")
 
     rm buildpath/"sources/pyside2/doc/CMakeLists.txt" if build.without? "docs"
-    qt = Formula["#{@tap}/qt5152"]
+    # qt = Formula["#{@tap}/qt5152"]  # var not required for time being
 
     # Add out of tree build because one of its deps, shiboken, itself needs an
     # out of tree build in shiboken.rb.

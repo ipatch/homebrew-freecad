@@ -18,7 +18,7 @@ class Shiboken2 < Formula
   depends_on "#{@tap}/python3.9" => :build
 
   def install
-    qt = Formula["#{@tap}/qt5152"]
+    # qt = Formula["#{@tap}/qt5152"]  # var not required for the time being
 
     ENV["LLVM_INSTALL_DIR"] = Formula["llvm"].opt_prefix
 

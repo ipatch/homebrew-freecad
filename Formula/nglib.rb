@@ -1,7 +1,7 @@
 class Nglib < Formula
   desc "C++ Library of NETGEN's tetrahedral mesh generator"
   homepage "https://github.com/ngsolve/netgen"
-  url "https://github.com/ngsolve/netgen.git", 
+  url "https://github.com/ngsolve/netgen.git",
     tag: "v6.2.2007",
     revision: "9d71c172f33b62c18afa32fd90b836a3a7a0fc26"
   license "LGPL-2.1"
@@ -19,7 +19,8 @@ class Nglib < Formula
 
   def install
     inreplace "CMakeLists.txt", "find_package(OpenCasCade REQUIRED)",
-"find_package(OpenCasCade REQUIRED HINTS \""+Formula["#{@tap}/opencascade@7.5.0"].opt_lib+"/cmake/opencascade\")\n   set(OCC_INCLUDE_DIR ${OpenCASCADE_INCLUDE_DIR})\n   message(${OpenCASCADE_INCLUDE_DIR})"
+"find_package(OpenCasCade REQUIRED HINTS \""+Formula["#{@tap}/opencascade@7.5.0"].opt_lib+"/cmake/opencascade\")\n
+     set(OCC_INCLUDE_DIR ${OpenCASCADE_INCLUDE_DIR})\n   message(${OpenCASCADE_INCLUDE_DIR})"
     mkdir "Build" do
       system "cmake", "-DUSE_PYTHON=OFF", "-DUSE_GUI=OFF", "-DUSE_OCC=ON",
    '-DCMAKE_PREFIX_PATH="' + Formula["#{@tap}/opencascade@7.5.0"].opt_prefix + "/lib/cmake;", *std_cmake_args, ".."

@@ -9,6 +9,10 @@ class CoinAT400 < Formula
     sha256 "b00d2a8e9d962397cf9bf0d9baa81bcecfbd16eef675a98c792f5cf49eb6e805"
   end
 
+  head do
+    url "https://github.com/coin3d/coin.git", branch: "master"
+  end
+
   bottle do
     root_url "https://justyour.parts:8080/freecad"
     sha256 cellar: :any, big_sur:  "7ffc242e36407db7cd5195cd62e9b6998b6114e9a7fdf70adadecfef0507e316"
