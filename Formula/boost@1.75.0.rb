@@ -3,7 +3,6 @@ class BoostAT1750 < Formula
   homepage "https://www.boost.org/"
   url "https://boostorg.jfrog.io/artifactory/main/release/1.75.0/source/boost_1_75_0.tar.bz2"
   mirror "https://boostorg.jfrog.io/artifactory/main/release/1.75.0/source/boost_1_75_0.tar.gz"
-  version "1.75.0"
   sha256 "953db31e016db7bb207f11432bef7df100516eeb746843fa0486a222e3fd49cb"
   license "BSL-1.0"
   head "https://github.com/boostorg/boost.git"
@@ -19,7 +18,10 @@ class BoostAT1750 < Formula
     sha256 cellar: :any, catalina: "21fc3612d49249ff563dacedb633dbf8050a8e1ab3feb0100395a500fa610624"
   end
 
-  depends_on "#{@tap}/icu4c@67.1"
+  # NOTE: `"#{@tap}/formula` syntax causes `brew audit` failures
+  # SEE: https://github.com/Homebrew/discussions/discussions/1860#discussioncomment-1030454
+
+  depends_on "./icu4c@67.1"
 
   uses_from_macos "bzip2"
   uses_from_macos "zlib"
