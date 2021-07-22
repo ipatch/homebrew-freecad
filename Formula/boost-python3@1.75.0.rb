@@ -19,9 +19,9 @@ class BoostPython3AT1750 < Formula
 
   keg_only "provided by homebrew core"
 
-  depends_on "#{@tap}/numpy@1.19.4" => :build
-  depends_on "#{@tap}/boost@1.75.0"
-  depends_on "#{@tap}/python3.9"
+  depends_on "./numpy@1.19.4" => :build
+  depends_on "./boost@1.75.0"
+  depends_on "./python3.9"
 
   def install
     # "layout" should be synchronized with boost

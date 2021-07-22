@@ -10,11 +10,11 @@ class MedFile < Formula
     sha256 cellar: :any, catalina: "d66199bb1cbd71baf8f17bbef258fe64f02fe6f7cfc21427555f3c5b31297e1d"
   end
 
+  depends_on "./swig@4.0.2" => :build
   depends_on "cmake" => :build
   depends_on "gcc" => :build   # for gfortan
-  depends_on "#{@tap}/swig@4.0.2" => :build
+  depends_on "./python3.9"
   depends_on "hdf5@1.10"
-  depends_on "#{@tap}/python3.9"
 
   def install
     python_prefix=`#{Formula["#{@tap}/python3.9"].opt_bin}/python3-config --prefix`.chomp

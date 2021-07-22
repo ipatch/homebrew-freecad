@@ -19,9 +19,9 @@ class OpencascadeAT750 < Formula
   depends_on "cmake" => :build
   depends_on "doxygen" => :build
   depends_on "rapidjson" => :build
+  depends_on "./tbb@2020_u3"
   depends_on "freeimage"
   depends_on "freetype"
-  depends_on "#{@tap}/tbb@2020_u3"
 
   def install
     system "cmake", ".",

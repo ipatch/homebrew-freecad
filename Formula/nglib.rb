@@ -15,7 +15,7 @@ class Nglib < Formula
 
   depends_on "cmake" => :build
 
-  depends_on "#{@tap}/opencascade@7.5.0"
+  depends_on "./opencascade@7.5.0"
 
   def install
     inreplace "CMakeLists.txt", "find_package(OpenCasCade REQUIRED)",

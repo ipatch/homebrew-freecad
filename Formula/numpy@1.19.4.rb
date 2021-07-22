@@ -16,10 +16,10 @@ class NumpyAT1194 < Formula
     sha256 cellar: :any, catalina: "b634193a2e1c28438bc659622ef90c151bb8f5bbf2d5ae03f877df43c4f9d9a1"
   end
 
-  depends_on "#{@tap}/cython@0.29.21" => :build
+  depends_on "./cython@0.29.21" => :build
   depends_on "gcc" => :build # for gfortran
+  depends_on "./python3.9"
   depends_on "openblas"
-  depends_on "#{@tap}/python3.9"
 
   # Upstream fix for Apple Silicon, remove in next version
   # https://github.com/numpy/numpy/pull/17906

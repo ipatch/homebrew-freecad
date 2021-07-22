@@ -24,9 +24,9 @@ class CoinAT400 < Formula
   option "with-docs",       "Install documentation"
   option "with-threadsafe", "Include Thread safe traverals (experimental)"
 
-  depends_on "#{@tap}/boost@1.75.0"
   depends_on "cmake"   => :build
   depends_on "doxygen" => :build if build.with? "docs"
+  depends_on "./boost@1.75.0"
 
   def install
     cmake_args = std_cmake_args

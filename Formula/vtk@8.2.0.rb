@@ -17,16 +17,16 @@ class VtkAT820 < Formula
   deprecate! date: "2020-05-14", because: :versioned_formula
 
   depends_on "cmake" => :build
-  depends_on "#{@tap}/boost@1.75.0"
+  depends_on "./boost@1.75.0"
+  depends_on "./pyqt@5.15.2"
+  depends_on "./python3.9"
+  depends_on "./qt5152"
   depends_on "fontconfig"
   depends_on "hdf5"
   depends_on "jpeg"
   depends_on "libpng"
   depends_on "libtiff"
   depends_on "netcdf"
-  depends_on "#{@tap}/pyqt@5.15.2"
-  depends_on "#{@tap}/python3.9"
-  depends_on "#{@tap}/qt5152"
 
   # Fix compile issues on Mojave and later
   patch do
