@@ -19,8 +19,8 @@ class Opencamlib < Formula
   depends_on "cmake" => :build
 
   patch :p0 do
-    url "https://raw.githubusercontent.com/vejmarie/patches/master/OpenCAMlib/fix_mac.patch"
-    sha256 "e49a5a9ab1698019c53656f3ca6625db1b40012147998fd9b35f467917897295"
+    url "https://raw.githubusercontent.com/vejmarie/patches/fbecb644a38970e08874a4b357abe250b857a821/OpenCAMlib/fix_mac.patch"
+    sha256 "25218354e098796e9f043c4a01b25d1919b0bfdc0b9e42123c380359884e592d"
   end
 
   def install

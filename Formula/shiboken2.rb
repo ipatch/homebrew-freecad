@@ -11,11 +11,11 @@ class Shiboken2 < Formula
     sha256 cellar: :any, catalina: "94c2375a547b26b06128cd8705de6bd3f42f8a445dea5a2d9202040f9e61a033"
   end
 
+  depends_on "./python3.9" => :build
   depends_on "cmake" => :build
+  depends_on "./numpy@1.19.4"
+  depends_on "./qt5152"
   depends_on "llvm"
-  depends_on "#{@tap}/numpy@1.19.4"
-  depends_on "#{@tap}/qt5152"
-  depends_on "#{@tap}/python3.9" => :build
 
   def install
     # qt = Formula["#{@tap}/qt5152"]  # var not required for the time being

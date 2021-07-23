@@ -13,9 +13,9 @@ class Pyside2Tools < Formula
     sha256 cellar: :any, catalina: "313cdb6754ad9f62abd03e8bfcc9f270bc308a5405fe91a56659d26d420db287"
   end
 
+  depends_on "./python3.9" => :build
   depends_on "cmake" => :build
-  depends_on "#{@tap}/python3.9" => :build
-  depends_on "#{@tap}/pyside2"
+  depends_on "./pyside2"
 
   def install
     mkdir "macbuild3.9" do

@@ -69,7 +69,7 @@ class Elmer < Formula
     # args << "-DWITH_MPI:BOOL=TRUE "
     args << "-DWITH_MPI:BOOL=FALSE "
 
-    args << "-DWITH_LUA:BOOL=TRUE "
+    # args << "-DWITH_LUA:BOOL=TRUE "
     args << "-DWITH_LUA:BOOL=FALSE "
 
     args << "-DWITH_Mumps:BOOL=FALSE "

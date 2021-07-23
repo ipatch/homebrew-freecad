@@ -13,9 +13,9 @@ class TbbAT2020U3 < Formula
     sha256 cellar: :any, catalina: "0a2ea081cf8647fd270229d9da1b01909d77b4052e1b516b01e2998176567d9a"
   end
 
+  depends_on "./swig@4.0.2" => :build
   depends_on "cmake" => :build
-  depends_on "#{@tap}/swig@4.0.2" => :build
-  depends_on "#{@tap}/python3.9"
+  depends_on "./python3.9"
 
   # Remove when upstream fix is released
   # https://github.com/oneapi-src/oneTBB/pull/258
