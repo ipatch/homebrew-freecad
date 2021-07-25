@@ -6,7 +6,6 @@ on:
     types:
       - labeled
 
-on:
   push:
     branches:
       - main
