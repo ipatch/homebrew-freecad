@@ -25,7 +25,7 @@ class Elmer < Formula
       -DWITH_Mumps:BOOL=FALSE
     ]
 
-    mkdir "Build" do
+    mkdir "build" do
       system "cmake", *args, ".."
       system "make", "install"
     end
