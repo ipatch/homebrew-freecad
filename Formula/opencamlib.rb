@@ -12,10 +12,9 @@ class Opencamlib < Formula
     sha256 cellar: :any, catalina: "695a0c707cc565aaa181049a2958e80fcaf21a76c573983e9d1314a19e90c8bd"
   end
 
-  depends_on "#{@tap}/boost-python3@1.75.0" => :build
-  depends_on "#{@tap}/boost@1.75.0" => :build
-  depends_on "#{@tap}/boost@1.75.0" => :build
-  depends_on "#{@tap}/python3.9" => :build
+  depends_on "./boost-python3@1.75.0" => :build
+  depends_on "./boost@1.75.0" => :build
+  depends_on "./python3.9" => :build
   depends_on "cmake" => :build
 
   patch :p0 do
