@@ -14,7 +14,6 @@ class Nglib < Formula
   end
 
   depends_on "cmake" => :build
-
   depends_on "./opencascade@7.5.0"
 
   def install
