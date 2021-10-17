@@ -91,9 +91,9 @@ class BoostPython3AT1760 < Formula
        }
      EOS
 
-     pyincludes = shell_output("#{Formula["python@3.9"].opt_bin}/python3-config --includes").chomp.split
-     pylib = shell_output("#{Formula["python@3.9"].opt_bin}/python3-config --ldflags --embed").chomp.split
-     pyver = Language::Python.major_minor_version(Formula["python@3.9"].opt_bin/"python3").to_s.delete(".")
+     pyincludes = shell_output("#{Formula["./python@3.9.7"].opt_bin}/python3-config --includes").chomp.split
+     pylib = shell_output("#{Formula["./python@3.9.7"].opt_bin}/python3-config --ldflags --embed").chomp.split
+     pyver = Language::Python.major_minor_version(Formula["./python@3.9.7"].opt_bin/"python3").to_s.delete(".")
 
      system ENV.cxx, "-shared", "-fPIC", "hello.cpp", "-L#{lib}", "-lboost_python#{pyver}", "-o",
             "hello.so", *pyincludes, *pylib
@@ -102,5 +102,6 @@ class BoostPython3AT1760 < Formula
        import hello
        print(hello.greet())
      EOS
-     assert_match "Hello, world!", pipe_output(Formula["python@3.9"].opt_bin/"python3", output, 0)
+     assert_match "Hello, world!", pipe_output(Formula["./python@3.9.7"].opt_bin/"python3", output, 0)
    end
+ end
