@@ -22,7 +22,7 @@ class BoostAT1760 < Formula
      sha256 cellar: :any_skip_relocation, x86_64_linux:  "6203e3d6ae16a3e71d79ad67763a59733e84457253c1d44b01a15a72623b8a95"
    end
 
-   depends_on "./icu4c"
+   depends_on "./icu4c@69.1"
 
    uses_from_macos "bzip2"
    uses_from_macos "zlib"
