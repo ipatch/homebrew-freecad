@@ -14,7 +14,7 @@ class NumpyAT1212 < Formula
     sha256               x86_64_linux:  "e6c64515ea9d22ed0e15d5f40bdf13335fff038ba0e63d735fc0c6d39389d1c2"
   end
 
-  depends_on "./cython" => :build
+  depends_on "./cython@0.29.24" => :build
   depends_on "gcc" => :build # for gfortran
   depends_on "openblas"
   depends_on "./python@3.9.7"
