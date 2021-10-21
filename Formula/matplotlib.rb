@@ -36,16 +36,16 @@ end
 class Matplotlib < Formula
   desc "Python 2D plotting library"
   homepage "https://matplotlib.org"
-  url "https://files.pythonhosted.org/packages/50/27/57ab73d1b094540dec1a01d2207613248d8106f3c3f40e8d86f02eb8d18b/matplotlib-2.1.1.tar.gz"
-  sha256 "659f5e1aa0e0f01488c61eff47560c43b8be511c6a29293d7f3896ae17bd8b23"
+  url "https://files.pythonhosted.org/packages/21/37/197e68df384ff694f78d687a49ad39f96c67b8d75718bc61503e1676b617/matplotlib-3.4.3.tar.gz"
+  sha256 "fc4f526dfdb31c9bd6b8ca06bf9fab663ca12f3ec9cdf4496fb44bc680140318"
   head "https://github.com/matplotlib/matplotlib.git"
 
-  bottle do
-    root_url "https://github.com/freecad/homebrew-freecad/releases/download/07.28.2021"
-    sha256 cellar: :any, big_sur:   "150759a0b8ea4e159e0a4ed1229340775e90ab6b47ab397fe1ec040250ceef94"
-    sha256 cellar: :any, catalina:  "7f3d19de027ab6dd81e6b6021315682bcfe54f410bb29a1fb1cea0ba0a8515eb"
-    sha256 cellar: :any, mojave:    "5331f0dca64b5d8a583944c6d597937833943ebc02ab3da54762baccd6d38620"
-  end
+  #bottle do
+    # root_url "https://github.com/freecad/homebrew-freecad/releases/download/07.28.2021"
+    # sha256 cellar: :any, big_sur:   "150759a0b8ea4e159e0a4ed1229340775e90ab6b47ab397fe1ec040250ceef94"
+    #sha256 cellar: :any, catalina:  "7f3d19de027ab6dd81e6b6021315682bcfe54f410bb29a1fb1cea0ba0a8515eb"
+    # sha256 cellar: :any, mojave:    "5331f0dca64b5d8a583944c6d597937833943ebc02ab3da54762baccd6d38620"
+  # end
 
   option "with-cairo", "Build with cairo backend support"
   option "with-tex", "Build with tex support"
@@ -55,8 +55,8 @@ class Matplotlib < Formula
   depends_on NoExternalPyCXXPackage => :build
   depends_on "pkg-config" => :build
   depends_on DvipngRequirement if build.with? "tex"
-  depends_on "freecad/freecad/numpy@1.19.4"
-  depends_on "freecad/freecad/python@3.9.6"
+  depends_on "freecad/freecad/numpy@1.21.2"
+  depends_on "freecad/freecad/python@3.9.7"
   depends_on "freetype"
   depends_on "ghostscript"
   depends_on "gtk+3"
@@ -71,8 +71,8 @@ class Matplotlib < Formula
   cxxstdlib_check :skip
 
   resource "setuptools" do
-    url "https://files.pythonhosted.org/packages/db/e2/c0ced9ccffb61432305665c22842ea120c0f649eec47ecf2a45c596707c4/setuptools-57.4.0.tar.gz"
-    sha256 "6bac238ffdf24e8806c61440e755192470352850f3419a52f26ffe0a1a64f465"
+    url "https://files.pythonhosted.org/packages/1e/5c/3d7b3d91a86d71faf5038c5d259ed36b5d05b7804648e2c43251d574a6e6/setuptools-58.2.0.tar.gz"
+    sha256 "2c55bdb85d5bb460bd2e3b12052b677879cffcf46c0c688f2e5bf51d36001145"
   end
 
   resource "Cycler" do
@@ -81,29 +81,30 @@ class Matplotlib < Formula
   end
 
   resource "pyparsing" do
-    url "https://files.pythonhosted.org/packages/3c/ec/a94f8cf7274ea60b5413df054f82a8980523efd712ec55a59e7c3357cf7c/pyparsing-2.2.0.tar.gz"
-    sha256 "0832bcf47acd283788593e7a0f542407bd9550a55a8a8435214a1960e04bcb04"
+    url "https://files.pythonhosted.org/packages/c1/47/dfc9c342c9842bbe0036c7f763d2d6686bcf5eb1808ba3e170afdb282210/pyparsing-2.4.7.tar.gz"
+    sha256 "c203ec8783bf771a155b207279b9bccb8dea02d8f0c9e5f8ead507bc3246ecc1"
   end
 
   resource "python-dateutil" do
-    url "https://files.pythonhosted.org/packages/54/bb/f1db86504f7a49e1d9b9301531181b00a1c7325dc85a29160ee3eaa73a54/python-dateutil-2.6.1.tar.gz"
-    sha256 "891c38b2a02f5bb1be3e4793866c8df49c7d19baabf9c1bad62547e0b4866aca"
+    url "https://files.pythonhosted.org/packages/4c/c4/13b4776ea2d76c115c1d1b84579f3764ee6d57204f6be27119f13a61d0a9/python-dateutil-2.8.2.tar.gz"
+    sha256 "0123cacc1627ae19ddf3c27a5de5bd67ee4586fbdd6440d9748f8abb483d3e86"
   end
 
   resource "pytz" do
-    url "https://files.pythonhosted.org/packages/60/88/d3152c234da4b2a1f7a989f89609ea488225eaea015bc16fbde2b3fdfefa/pytz-2017.3.zip"
-    sha256 "fae4cffc040921b8a2d60c6cf0b5d662c1190fe54d718271db4eb17d44a185b7"
+    url "https://files.pythonhosted.org/packages/e3/8e/1cde9d002f48a940b9d9d38820aaf444b229450c0854bdf15305ce4a3d1a/pytz-2021.3.tar.gz"
+    sha256 "acad2d8b20a1af07d4e4c9d2e9285c5ed9104354062f275f3fcd88dcef4f1326"
   end
 
   resource "six" do
-    url "https://files.pythonhosted.org/packages/16/d8/bc6316cf98419719bd59c91742194c111b6f2e85abac88e496adefaf7afe/six-1.11.0.tar.gz"
-    sha256 "70e8a77beed4562e7f14fe23a786b54f6296e34344c23bc42f07b15018ff98e9"
+    url "https://files.pythonhosted.org/packages/71/39/171f1c67cd00715f190ba0b100d606d440a28c93c7714febeca8b79af85e/six-1.16.0.tar.gz"
+    sha256 "1e61c37477a1626458e36f7b1d82aa5c9b094fa4802892072e49de9c60c4c926"
   end
 
   def install
     # NOTE: freecad python no pip3 bin in opt dir use Cellar
-    system "#{HOMEBREW_PREFIX}/Cellar/python@3.9.6/3.9.6_3/bin/pip3", "install", "pytz"
-    system Formula["#{@tap}/python@3.9.6"].opt_bin.to_s+"/python3", "-mpip", "install", "--prefix=#{prefix}", "."
+    # NOTE: pytz is already inculded by the resources.
+    #system "#{HOMEBREW_PREFIX}/Cellar/python@3.9.7/3.9.7_1/bin/pip3", "install", "pytz"
+    system Formula["./python@3.9.7"].opt_bin.to_s+"/python3", "-mpip", "install", "--prefix=#{prefix}", "."
     version = "3.9"
     bundle_path = libexec/"lib/python#{version}/site-packages"
     bundle_path.mkpath
@@ -116,12 +117,12 @@ class Matplotlib < Formula
     p(*Language::Python.setup_install_args(libexec))
     res.each do |r|
       resource(r).stage do
-        system Formula["#{@tap}/python@3.9.6"].opt_bin.to_s+"/python3", *Language::Python.setup_install_args(libexec)
+        system Formula["./python@3.9.7"].opt_bin.to_s+"/python3", *Language::Python.setup_install_args(libexec)
       end
     end
     (lib/"python#{version}/site-packages/homebrew-matplotlib-bundle.pth").write "#{bundle_path}\n"
 
-    system Formula["#{@tap}/python@3.9.6"].opt_bin.to_s+"/python3", *Language::Python.setup_install_args(prefix)
+    system Formula["./python@3.9.7"].opt_bin.to_s+"/python3", *Language::Python.setup_install_args(prefix)
   end
 
   def caveats
