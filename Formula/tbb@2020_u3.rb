@@ -38,7 +38,7 @@ class TbbAT2020U3 < Formula
 
     cd "python" do
       ENV["TBBROOT"] = prefix
-      system Formula["#./python@3.9.7"].opt_bin/"python3", *Language::Python.setup_install_args(prefix)
+      system Formula["./python@3.9.7"].opt_bin/"python3", *Language::Python.setup_install_args(prefix)
       # system "/usr/local/bin/python3", *Language::Python.setup_install_args(prefix)
     end
 
