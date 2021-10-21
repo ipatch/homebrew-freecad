@@ -11,7 +11,11 @@ class NglibAT622104 < Formula
   depends_on "./opencascade@7.5.3"
 
   def install
-    cmake_prefix_path = Formula["./opencascade@7.5.3"].opt_prefix + "/lib/cmake;"
+    occ = Formula["./opencascade@7.5.3"]
+    inreplace "CMakeLists.txt", "find_package(OpenCasCade REQUIRED)",
+    "find_package(OpenCasCade REQUIRED HINTS \"" + occ.opt_lib + 
+    "/cmake/opencascade\")\n   set(OCC_INCLUDE_DIR ${OpenCASCADE_INCLUDE_DIR})\n   message(${OpenCASCADE_INCLUDE_DIR})"
+    cmake_prefix_path = occ.opt_prefix + "/lib/cmake;"
 
     args = std_cmake_args + %W[
       -DUSE_PYTHON=OFF
