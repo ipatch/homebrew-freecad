@@ -35,10 +35,10 @@ class NumpyAT1212 < Formula
 
     Pathname("site.cfg").write config
 
-    version = Language::Python.major_minor_version Formula["#{@tap}/python@3.9.6"].opt_bin/"python3"
-    ENV.prepend_create_path "PYTHONPATH", Formula["#{@tap}/cython@0.29.21"].opt_libexec/"lib/python#{version}/site-packages"
+    version = Language::Python.major_minor_version Formula["./python@3.9.7"].opt_bin/"python3"
+    ENV.prepend_create_path "PYTHONPATH", Formula["./cython@0.29.24"].opt_libexec/"lib/python#{version}/site-packages"
 
-    system Formula["#{@tap}/python@3.9.7"].opt_bin/"python3", "setup.py", "build",
+    system Formula["./python@3.9.7"].opt_bin/"python3", "setup.py", "build",
         "--fcompiler=gfortran", "--parallel=#{ENV.make_jobs}"
     system Formula["python@3.9.7"].opt_bin/"python3", *Language::Python.setup_install_args(prefix)
   end
