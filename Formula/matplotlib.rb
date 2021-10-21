@@ -104,7 +104,7 @@ class Matplotlib < Formula
     # NOTE: freecad python no pip3 bin in opt dir use Cellar
     # NOTE: pytz is already inculded by the resources.
     #system "#{HOMEBREW_PREFIX}/Cellar/python@3.9.7/3.9.7_1/bin/pip3", "install", "pytz"
-    system Formula["./python@3.9.7"].opt_bin.to_s+"/python3", "-mpip", "install", "--prefix=#{prefix}", "."
+    #system Formula["./python@3.9.7"].opt_bin.to_s+"/python3", "-mpip", "install", "--prefix=#{prefix}", "."
     py = Formula["./python@3.9.7"]
     ENV.prepend_create_path "PYTHONPATH", py.site_packages
     system py.opt_bin/"python3", *Language::Python.setup_install_args(prefix)
