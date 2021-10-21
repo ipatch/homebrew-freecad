@@ -8,10 +8,10 @@ class NglibAT622104 < Formula
   head "https://github.com/ngsolve/netgen.git"
 
   depends_on "cmake" => :build
-  depends_on "./opencascade"
+  depends_on "./opencascade@7.5.3"
 
   def install
-    cmake_prefix_path = Formula["./opencascade"].opt_prefix + "/lib/cmake;"
+    cmake_prefix_path = Formula["./opencascade@7.5.3"].opt_prefix + "/lib/cmake;"
 
     args = std_cmake_args + %W[
       -DUSE_PYTHON=OFF
