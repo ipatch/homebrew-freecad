@@ -36,7 +36,7 @@ class OpencascadeAT753 < Formula
   depends_on "rapidjson" => :build
   depends_on "freeimage"
   depends_on "freetype"
-  depends_on "tbb@2020"
+  depends_on "./tbb@2020_u3"
   depends_on "tcl-tk"
 
   def install
