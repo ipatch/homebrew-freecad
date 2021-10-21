@@ -7,16 +7,16 @@ class TbbAT2020U3 < Formula
   license "Apache-2.0"
   revision 1
 
-  bottle do
-    root_url "https://github.com/freecad/homebrew-freecad/releases/download/07.28.2021"
-    sha256 cellar: :any, big_sur:   "62f987215e72d992507d6b9e0f1fcef19afac7e939b508db35f76112bda94ab7"
-    sha256 cellar: :any, catalina:  "0a2ea081cf8647fd270229d9da1b01909d77b4052e1b516b01e2998176567d9a"
-    sha256 cellar: :any, mojave:    "4e1a592b5170c454f78e4363a0023ed17a16566de6c270a4586ea501723b6594"
-  end
+  #bottle do
+  #  root_url "https://github.com/freecad/homebrew-freecad/releases/download/07.28.2021"
+  #  sha256 cellar: :any, big_sur:   "62f987215e72d992507d6b9e0f1fcef19afac7e939b508db35f76112bda94ab7"
+  #  sha256 cellar: :any, catalina:  "0a2ea081cf8647fd270229d9da1b01909d77b4052e1b516b01e2998176567d9a"
+  #  sha256 cellar: :any, mojave:    "4e1a592b5170c454f78e4363a0023ed17a16566de6c270a4586ea501723b6594"
+  #end
 
   depends_on "cmake" => :build
-  depends_on "freecad/freecad/swig@4.0.2" => :build
-  depends_on "freecad/freecad/python@3.9.6"
+  depends_on "./swig@4.0.2" => :build
+  depends_on "./python@3.9.7"
 
   # Remove when upstream fix is released
   # https://github.com/oneapi-src/oneTBB/pull/258
@@ -38,8 +38,8 @@ class TbbAT2020U3 < Formula
 
     cd "python" do
       ENV["TBBROOT"] = prefix
-      # system Formula["#{@tap}/python@3.9.6"].opt_bin/"python3", *Language::Python.setup_install_args(prefix)
-      system "/usr/local/bin/python3", *Language::Python.setup_install_args(prefix)
+      system Formula["#./python@3.9.7"].opt_bin/"python3", *Language::Python.setup_install_args(prefix)
+      # system "/usr/local/bin/python3", *Language::Python.setup_install_args(prefix)
     end
 
     system "cmake", *std_cmake_args,
