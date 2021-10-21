@@ -55,8 +55,8 @@ class Matplotlib < Formula
   depends_on NoExternalPyCXXPackage => :build
   depends_on "pkg-config" => :build
   depends_on DvipngRequirement if build.with? "tex"
-  depends_on "freecad/freecad/numpy@1.21.2"
-  depends_on "freecad/freecad/python@3.9.7"
+  depends_on "./numpy@1.21.2"
+  depends_on "./python@3.9.7"
   depends_on "freetype"
   depends_on "ghostscript"
   depends_on "gtk+3"
