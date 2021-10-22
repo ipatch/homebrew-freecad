@@ -19,7 +19,7 @@ class BoostPython3AT1760 < Formula
    end
 
    depends_on "./numpy@1.21.2" => :build
-   depends_on "./boost@1.7.6"
+   depends_on "./boost@1.76.0"
    depends_on "./python@3.9.7"
 
    def install
