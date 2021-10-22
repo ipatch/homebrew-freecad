@@ -70,6 +70,11 @@ class PythonAT397 < Formula
     url "https://files.pythonhosted.org/packages/71/39/171f1c67cd00715f190ba0b100d606d440a28c93c7714febeca8b79af85e/six-1.16.0.tar.gz"
     sha256 "1e61c37477a1626458e36f7b1d82aa5c9b094fa4802892072e49de9c60c4c926"
   end
+  
+  resource "spnav" do
+    url "https://files.pythonhosted.org/packages/b3/73/cb8a04d21c21382c842b1a971ee24ea128af8328c87fd220a3e46361b42b/spnav-0.9.tar.gz"
+    sha256 "f94cb7bced3a400061c458716b67e02b221abaa240a6641c0d68c6d5db99f433"
+  end
 
   # Link against libmpdec.so.3, update for mpdecimal.h symbol cleanup.
   patch do
