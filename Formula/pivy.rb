@@ -16,7 +16,7 @@ class Pivy < Formula
 
   depends_on "./swig@4.0.2" => :build
   depends_on "cmake" => :build
-  depends_on "freecad/freecad/python@3.9.6" => :build
+  depends_on "./python@3.9.7" => :build
   depends_on "./coin@4.0.0"
 
   def install
