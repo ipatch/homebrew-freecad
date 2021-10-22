@@ -2,8 +2,8 @@ class Pivy < Formula
   desc "Python bindings to coin3d"
   homepage "https://github.com/coin3d/pivy"
   url "https://github.com/coin3d/pivy.git",
-    tag:      "0.6.5",
-    revision: "5cf70be7b1d0e9ed5ab8060b34cf51c94b77511e"
+    tag:      "0.6.6",
+    revision: "55e659de7ea346d3caf176d7fe254224d36e4791"
   license "ISC"
   head "https://github.com/coin3d/pivy.git"
 
