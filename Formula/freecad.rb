@@ -24,7 +24,7 @@ class Freecad < Formula
   option "with-skip-web", "Disable web"
   option "with-vtk9", "Use the vtk9 toolkit."
   
-  @@vtk = build.with? 'vtk9' ? "./vtk@9.0.3" : "./vtk@8.2.0" 
+  @@vtk = build.with?('vtk9') ? "./vtk@9.0.3" : "./vtk@8.2.0" 
 
   depends_on "./swig@4.0.2" => :build
   depends_on "ccache" => :build
@@ -77,8 +77,8 @@ class Freecad < Formula
       end
     end
 
-    python_exe = Formula["./python3.9.7"].opt_prefix/"bin/python3"
-    python_headers = Formula["./python3.9.7"].opt_prefix/"Frameworks/Python.framework/Headers"
+    python_exe = Formula["./python@3.9.7"].opt_prefix/"bin/python3"
+    python_headers = Formula["./python@3.9.7"].opt_prefix/"Frameworks/Python.framework/Headers"
 
     prefix_paths = ""
     prefix_paths << (Formula["./qt5152"].lib/"cmake;")
