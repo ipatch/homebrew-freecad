@@ -63,16 +63,16 @@ class Freecad < Formula
     python_headers = Formula["./python3.9.7"].opt_prefix/"Frameworks/Python.framework/Headers"
 
     prefix_paths = ""
-    prefix_paths << (Formula["./qt5152"].opt_prefix/"lib/cmake;")
+    prefix_paths << (Formula["./qt5152"].lib/"cmake;")
     prefix_paths << (Formula["./nglib@6.2.2105"].opt_prefix/"Contents/Resources;")
-    prefix_paths << (Formula["./vtk@8.2.0"].opt_prefix/"lib/cmake;")
-    prefix_paths << (Formula["./opencascade@7.5.3"].opt_prefix + "/lib/cmake;")
-    prefix_paths << (Formula["./med-file@4.1.0"].opt_prefix + "/share/cmake/;")
-    prefix_paths << (Formula["./shiboken2@5.15.2"].opt_prefix + "/lib/cmake;")
-    prefix_paths << (Formula["./pyside2"].opt_prefix+ "/lib/cmake;")
-    prefix_paths << (Formula["./coin@4.0.0"].opt_prefix+ "/lib/cmake;")
-    prefix_paths << (Formula["./boost@1.76.0"].opt_prefix+ "/lib/cmake;")
-    prefix_paths << (Formula["./boost-python3@1.76.0"].opt_prefix+ "/lib/cmake;")
+    prefix_paths << (Formula["./vtk@8.2.0"].lib/"cmake;")
+    prefix_paths << (Formula["./opencascade@7.5.3"].lib/"cmake;")
+    prefix_paths << (Formula["./med-file@4.1.0"].share/"cmake/;")
+    prefix_paths << (Formula["./shiboken2@5.15.2"].lib/"cmake;")
+    prefix_paths << (Formula["./pyside2"].lib/"cmake;")
+    prefix_paths << (Formula["./coin@4.0.0"].lib/"cmake;")
+    prefix_paths << (Formula["./boost@1.76.0"].lib/"cmake;")
+    prefix_paths << (Formula["./boost-python3@1.76.0"].lib/"cmake;")
 
     # Disable function which are not available for Apple Silicon
     act = Hardware::CPU.arm? ? "OFF" : "ON"
