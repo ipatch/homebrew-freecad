@@ -14,16 +14,16 @@ class Shiboken2AT5152 < Formula
   keg_only :versioned_formula # NOTE: will conflict with other shiboken2 installs
 
   depends_on "cmake" => :build
-  depends_on "python@3.9" => :build
+  depends_on "./python@3.9.7" => :build
+  depends_on "./numpy@1.21.2"
+  depends_on "./qt5152"
   depends_on "llvm"
-  depends_on "numpy"
-  depends_on "qt@5"
 
   def install
     ENV["LLVM_INSTALL_DIR"] = Formula["llvm"].opt_prefix
 
     mkdir "macbuild#{version}" do
-      pyhome = `#{Formula["python@3.9"].opt_bin}/python3.9-config --prefix`.chomp
+      pyhome = `#{Formula["./python@3.9.7"].opt_bin}/python3.9-config --prefix`.chomp
       py_library = "#{pyhome}/lib/libpython3.9.dylib"
       py_include = "#{pyhome}/include/python3.9"
       args = std_cmake_args
