@@ -26,21 +26,21 @@ class Freecad < Formula
   depends_on "./swig@4.0.2" => :build
   depends_on "ccache" => :build
   depends_on "cmake" => :build
-  depends_on "./boost-python3@1.75.0"
-  depends_on "./boost@1.75.0"
+  depends_on "./boost-python3@1.76.0"
+  depends_on "./boost@1.76.0"
   depends_on "./coin@4.0.0"
   depends_on "./matplotlib"
-  depends_on "./med-file"
-  depends_on "./nglib"
+  depends_on "./med-file@4.1.0"
+  depends_on "./nglib@6.2.2105"
   depends_on "./opencamlib"
-  depends_on "./opencascade@7.5.0"
+  depends_on "./opencascade@7.5.3"
   depends_on "./pivy"
   depends_on "./pyside2"
   depends_on "./pyside2-tools"
   depends_on "./qt5152"
   depends_on "./shiboken2"
   depends_on "./vtk@8.2.0"
-  depends_on "freecad/freecad/python@3.9.6"
+  depends_on "./python@3.9.7"
   depends_on "freetype"
   depends_on macos: :high_sierra # no access to sierra test box
   depends_on "open-mpi"
