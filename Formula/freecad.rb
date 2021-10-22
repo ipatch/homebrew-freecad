@@ -38,7 +38,7 @@ class Freecad < Formula
   depends_on "./pyside2"
   depends_on "./pyside2-tools"
   depends_on "./qt5152"
-  depends_on "./shiboken2@5.15.2."
+  depends_on "./shiboken2@5.15.2"
   depends_on "./vtk@8.2.0"
   depends_on "./python@3.9.7"
   depends_on "freetype"
@@ -59,20 +59,20 @@ class Freecad < Formula
       ENV["CXX"] = Formula["llvm"].opt_bin/"clang++"
     end
 
-    python_exe = Formula["#{@tap}/python3.9"].opt_prefix/"bin/python3"
-    python_headers = Formula["#{@tap}/python3.9"].opt_prefix/"Frameworks/Python.framework/Headers"
+    python_exe = Formula["./python3.9.7"].opt_prefix/"bin/python3"
+    python_headers = Formula["./python3.9.7"].opt_prefix/"Frameworks/Python.framework/Headers"
 
     prefix_paths = ""
-    prefix_paths << (Formula["#{@tap}/qt5152"].opt_prefix/"lib/cmake;")
-    prefix_paths << (Formula["#{@tap}/nglib"].opt_prefix/"Contents/Resources;")
-    prefix_paths << (Formula["#{@tap}/vtk@8.2.0"].opt_prefix/"lib/cmake;")
-    prefix_paths << (Formula["#{@tap}/opencascade@7.5.0"].opt_prefix + "/lib/cmake;")
-    prefix_paths << (Formula["#{@tap}/med-file"].opt_prefix + "/share/cmake/;")
-    prefix_paths << (Formula["#{@tap}/shiboken2"].opt_prefix + "/lib/cmake;")
-    prefix_paths << (Formula["#{@tap}/pyside2"].opt_prefix+ "/lib/cmake;")
-    prefix_paths << (Formula["#{@tap}/coin@4.0.0"].opt_prefix+ "/lib/cmake;")
-    prefix_paths << (Formula["#{@tap}/boost@1.75.0"].opt_prefix+ "/lib/cmake;")
-    prefix_paths << (Formula["#{@tap}/boost-python3@1.75.0"].opt_prefix+ "/lib/cmake;")
+    prefix_paths << (Formula["./qt5152"].opt_prefix/"lib/cmake;")
+    prefix_paths << (Formula["./nglib@6.2.2105"].opt_prefix/"Contents/Resources;")
+    prefix_paths << (Formula["./vtk@8.2.0"].opt_prefix/"lib/cmake;")
+    prefix_paths << (Formula["./opencascade@7.5.3"].opt_prefix + "/lib/cmake;")
+    prefix_paths << (Formula["./med-file@4.1.0"].opt_prefix + "/share/cmake/;")
+    prefix_paths << (Formula["./shiboken2@5.15.2"].opt_prefix + "/lib/cmake;")
+    prefix_paths << (Formula["./pyside2"].opt_prefix+ "/lib/cmake;")
+    prefix_paths << (Formula["./coin@4.0.0"].opt_prefix+ "/lib/cmake;")
+    prefix_paths << (Formula["./boost@1.76.0"].opt_prefix+ "/lib/cmake;")
+    prefix_paths << (Formula["./boost-python3@1.76.0"].opt_prefix+ "/lib/cmake;")
 
     # Disable function which are not available for Apple Silicon
     act = Hardware::CPU.arm? ? "OFF" : "ON"
