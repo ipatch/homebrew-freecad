@@ -17,7 +17,7 @@ class Pyside2 < Formula
   option "without-docs", "Skip building documentation"
 
   depends_on "cmake" => :build
-  depends_on "freecad/freecad/python@3.9.6" => :build
+  depends_on "./python@3.9.7" => :build
   depends_on "sphinx-doc" => :build if build.with? "docs"
   depends_on "./qt5152"
   depends_on "./shiboken2"
@@ -28,14 +28,14 @@ class Pyside2 < Formula
     ENV.cxx11
 
     # This is a workaround for current problems with Shiboken2
-    ENV["HOMEBREW_INCLUDE_PATHS"] = ENV["HOMEBREW_INCLUDE_PATHS"].sub(Formula["#{@tap}/qt5152"].include, "")
+    ENV["HOMEBREW_INCLUDE_PATHS"] = ENV["HOMEBREW_INCLUDE_PATHS"].sub(Formula["./qt5152"].include, "")
 
     rm buildpath/"sources/pyside2/doc/CMakeLists.txt" if build.without? "docs"
     # qt = Formula["#{@tap}/qt5152"]
 
     # Add out of tree build because one of its deps, shiboken, itself needs an
     # out of tree build in shiboken.rb.
-    pyhome = `#{Formula["#{@tap}/python3.9"].opt_bin}/python3.9-config --prefix`.chomp
+    pyhome = `#{Formula["./python3.9.7"].opt_bin}/python3.9-config --prefix`.chomp
     py_library = "#{pyhome}/lib/libpython3.9.dylib"
     py_include = "#{pyhome}/include/python3.9"
 

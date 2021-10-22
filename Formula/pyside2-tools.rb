@@ -15,7 +15,7 @@ class Pyside2Tools < Formula
   end
 
   depends_on "cmake" => :build
-  depends_on "freecad/freecad/python@3.9.6" => :build
+  depends_on "./python@3.9.7" => :build
   depends_on "./pyside2"
 
   def install
