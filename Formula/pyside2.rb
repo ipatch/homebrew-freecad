@@ -35,7 +35,7 @@ class Pyside2 < Formula
 
     # Add out of tree build because one of its deps, shiboken, itself needs an
     # out of tree build in shiboken.rb.
-    pyhome = `#{Formula["./python3.9.7"].opt_bin}/python3.9-config --prefix`.chomp
+    pyhome = `#{Formula["./python@3.9.7"].opt_bin}/python3.9-config --prefix`.chomp
     py_library = "#{pyhome}/lib/libpython3.9.dylib"
     py_include = "#{pyhome}/include/python3.9"
 
