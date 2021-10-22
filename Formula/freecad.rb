@@ -38,7 +38,7 @@ class Freecad < Formula
   depends_on "./pyside2"
   depends_on "./pyside2-tools"
   depends_on "./qt5152"
-  depends_on "./shiboken2"
+  depends_on "./shiboken2@5.15.2."
   depends_on "./vtk@8.2.0"
   depends_on "./python@3.9.7"
   depends_on "freetype"
