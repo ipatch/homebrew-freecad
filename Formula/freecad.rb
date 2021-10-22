@@ -22,6 +22,9 @@ class Freecad < Formula
   option "with-cloud", "Build with CLOUD module"
   option "with-unsecured-cloud", "Build with self signed certificate support CLOUD module"
   option "with-skip-web", "Disable web"
+  option "with-vtk9", "Use the vtk9 toolkit."
+  
+  @@vtk = build.with? 'vtk9' ? "./vtk@9.0.3" : "./vtk@8.2.0" 
 
   depends_on "./swig@4.0.2" => :build
   depends_on "ccache" => :build
@@ -39,7 +42,7 @@ class Freecad < Formula
   depends_on "./pyside2-tools"
   depends_on "./qt5152"
   depends_on "./shiboken2@5.15.2"
-  depends_on "./vtk@8.2.0"
+  depends_on @@vtk
   depends_on "./python@3.9.7"
   depends_on "freetype"
   depends_on macos: :high_sierra # no access to sierra test box
@@ -80,7 +83,7 @@ class Freecad < Formula
     prefix_paths = ""
     prefix_paths << (Formula["./qt5152"].lib/"cmake;")
     prefix_paths << (Formula["./nglib@6.2.2105"].opt_prefix/"Contents/Resources;")
-    prefix_paths << (Formula["./vtk@8.2.0"].lib/"cmake;")
+    prefix_paths << (Formula[@@vtk].lib/"cmake;")
     prefix_paths << (Formula["./opencascade@7.5.3"].lib/"cmake;")
     prefix_paths << (Formula["./med-file@4.1.0"].share/"cmake/;")
     prefix_paths << (Formula["./shiboken2@5.15.2"].lib/"cmake;")
