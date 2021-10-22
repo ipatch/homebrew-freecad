@@ -21,7 +21,7 @@ class SipAT41924 < Formula
 
   keg_only :versioned_formula
 
-  depends_on "freecad/freecad/python@3.9.6"
+  depends_on "./python@3.9.7"
   # keg_only "provided by homebrew core"
 
   # resource "packaging" do
@@ -54,7 +54,7 @@ class SipAT41924 < Formula
   # end
 
   def install
-    ENV.prepend_path "PATH", Formula["#{@tap}/python@3.9.6"].opt_bin
+    ENV.prepend_path "PATH", Formula["#{@tap}/python@3.9.7"].opt_bin
     ENV.delete("SDKROOT") # Avoid picking up /Application/Xcode.app paths
 
     if build.head?
