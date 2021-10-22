@@ -54,8 +54,11 @@ class Freecad < Formula
   depends_on "xerces-c"
 
   def install
-    system "pip3", "install", "six" unless File.exist?("/usr/local/lib/python3.9/site-packages/six.py")
-
+    # system "pip3", "install", "six" unless File.exist?("/usr/local/lib/python3.9/site-packages/six.py")
+    # we install six with python 
+    py = Formula["./python@3.9.7"]
+    puts 'Six not found' unless File.exist?("#{py.site_packages}/six.py")
+    
     # NOTE: brew clang compilers req, Xcode nowork on macOS 10.13 or 10.14
     if MacOS.version <= :mojave
       ENV["CC"] = Formula["llvm"].opt_bin/"clang"
@@ -128,7 +131,11 @@ class Freecad < Formula
   end
 
   def post_install
-    system "pip3", "install", "six" unless File.exist?("/usr/local/lib/python3.9/site-packages/six.py")
+    # system "pip3", "install", "six" unless File.exist?("/usr/local/lib/python3.9/site-packages/six.py")
+    # we install six with python 
+    py = Formula["./python@3.9.7"]
+    puts 'Six not found' unless File.exist?("#{py.site_packages}/six.py")
+    
     bin.install_symlink "../MacOS/FreeCAD" => "FreeCAD"
     bin.install_symlink "../MacOS/FreeCADCmd" => "FreeCADCmd"
     unless File.exist?("/usr/local/Cellar/freecad/0.19/lib/python3.9/site-packages/homebrew-freecad-bundle.pth")
