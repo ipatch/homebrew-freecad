@@ -20,7 +20,7 @@ class Pyside2 < Formula
   depends_on "./python@3.9.7" => :build
   depends_on "sphinx-doc" => :build if build.with? "docs"
   depends_on "./qt5152"
-  depends_on "./shiboken2"
+  depends_on "./shiboken2@5.15.2"
 
   conflicts_with "pyside@2", because: "non app bundle of freecad could use wrong version"
 
@@ -41,7 +41,7 @@ class Pyside2 < Formula
 
     mkdir "macbuild3.8" do
       ENV["LLVM_INSTALL_DIR"] = Formula["llvm"].opt_prefix
-      ENV["CMAKE_PREFIX_PATH"] = Formula["#{@tap}/shiboken2"].opt_prefix + "/lib/cmake"
+      ENV["CMAKE_PREFIX_PATH"] = Formula["./shiboken2@5.15.2"].opt_prefix + "/lib/cmake"
       args = std_cmake_args + %W[
         -DPYTHON_EXECUTABLE=#{pyhome}/bin/python3.9
         -DPYTHON_LIBRARY=#{py_library}
