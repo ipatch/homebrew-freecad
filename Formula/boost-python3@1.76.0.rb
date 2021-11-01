@@ -6,9 +6,9 @@ class BoostPython3AT1760 < Formula
    license "BSL-1.0"
    head "https://github.com/boostorg/boost.git", branch: "master"
 
-   livecheck do
-     formula "./boost@1.7.6"
-   end
+   #livecheck do
+   #   formula "./boost@1.7.6"
+   # end
 
    bottle do
      sha256 cellar: :any,                 arm64_big_sur: "5c5d10ed0373c7e068e2ca80fa98ff39ac444392bbcf0d6932fe92259f0f9f4a"
