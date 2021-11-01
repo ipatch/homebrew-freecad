@@ -1,5 +1,3 @@
-class Shiboken2AT5152 < Formula
-  
 class LlvmAT1300 < Formula
     desc "Next-gen compiler infrastructure"
     homepage "https://llvm.org/"
