@@ -72,6 +72,8 @@ class BoostPython3AT1760 < Formula
                     "--prefix=install-python3",
                     "python=#{pyver}",
                     *args
+                    
+     mkdir 'include' unless Dir.exist?('include')
 
      lib.install Dir["install-python3/lib/*.*"]
      (lib/"cmake").install Dir["install-python3/lib/cmake/boost_python*"]
