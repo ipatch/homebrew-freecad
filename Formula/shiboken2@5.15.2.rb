@@ -20,7 +20,7 @@ class Shiboken2AT5152 < Formula
   depends_on "./llvm@13.0.0"
 
   def install
-    ENV["LLVM_INSTALL_DIR"] = Formula["llvm"].opt_prefix
+    ENV["LLVM_INSTALL_DIR"] = Formula["./llvm@13.0.0"].opt_prefix
 
     mkdir "macbuild#{version}" do
       pyhome = `#{Formula["./python@3.9.7"].opt_bin}/python3.9-config --prefix`.chomp
