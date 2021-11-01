@@ -50,7 +50,7 @@ class Matplotlib < Formula
   option "with-cairo", "Build with cairo backend support"
   option "with-tex", "Build with tex support"
 
-  deprecated_option "with-gtk3" => "with-gtk+3"
+  #deprecated_option "with-gtk3" => "with-gtk+3"
 
   depends_on NoExternalPyCXXPackage => :build
   depends_on "pkg-config" => :build
@@ -59,7 +59,7 @@ class Matplotlib < Formula
   depends_on "./python@3.9.7"
   depends_on "freetype"
   depends_on "ghostscript"
-  depends_on "gtk+3"
+  #depends_on "gtk+3"
   depends_on "libpng"
   depends_on "py3cairo" if build.with?("cairo") && (build.with? "python3")
 
