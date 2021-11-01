@@ -6,7 +6,7 @@ class PythonoccCore < Formula
 
   depends_on "./opencascade@7.5.3" => :required
   depends_on "cmake" => :build
-  depends_on "./python3.9.7"
+  depends_on "./python@3.9.7"
 
   def install
     mkdir "Build" do
