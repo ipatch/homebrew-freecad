@@ -73,6 +73,8 @@ class BoostAT1760 < Formula
      # handling using ENV.cxx14. Using "cxxflags" and "linkflags" still works.
      args << "cxxflags=-std=c++14"
      args << "cxxflags=-stdlib=libc++" << "linkflags=-stdlib=libc++" if ENV.compiler == :clang
+     
+     mkdir 'include' unless Dir.exist?('include')
 
      system "./bootstrap.sh", *bootstrap_args
      system "./b2", "headers"
