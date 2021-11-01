@@ -17,7 +17,7 @@ class Shiboken2AT5152 < Formula
   depends_on "./python@3.9.7" => :build
   depends_on "./numpy@1.21.2"
   depends_on "./qt5152"
-  depends_on "llvm"
+  depends_on "./llvm@13.0.0"
 
   def install
     ENV["LLVM_INSTALL_DIR"] = Formula["llvm"].opt_prefix
