@@ -73,7 +73,10 @@ class BoostPython3AT1760 < Formula
                     "python=#{pyver}",
                     *args
                     
-     mkdir 'include' unless Dir.exist?('include')
+     unless Dir.exist?(opt_prefix+'include')
+       mkdir ('include')
+       File.write('include/weneedit.txt', 'FreeCAD cmake need it.')
+     end 
 
      lib.install Dir["install-python3/lib/*.*"]
      (lib/"cmake").install Dir["install-python3/lib/cmake/boost_python*"]
