@@ -1,4 +1,4 @@
-class LlvmAT11 < Formula
+class LlvmAT1100 < Formula
   desc "Next-gen compiler infrastructure"
   homepage "https://llvm.org/"
   url "https://github.com/llvm/llvm-project/releases/download/llvmorg-11.1.0/llvm-project-11.1.0.src.tar.xz"
