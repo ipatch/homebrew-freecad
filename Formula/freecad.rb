@@ -74,6 +74,7 @@ class Freecad < Formula
       inreplace cmakelist do |ln|
         ln.gsub! '/usr/local', '${HOMEBREW_PREFIX}'  # similar HOMEBREW_PREFIX.to_s 
         ln.gsub! 'Cellar/icu4c', 'Cellar/icu4c@69.1' # formula is renamed with version 
+        ln.gsub! '${CONFIG_NGLIB}', ('${CONFIG_NGLIB} ' + Formula['./nglib@6.2.2105'].opt_prefix/'Contents/MacOS/')
         ln.gsub! '${WEBKIT_FRAMEWORK_DIR}', '' if Hardware::CPU.arm? # do not need for apple silicon, see below
         ln.gsub! 'pkg_check_modules(ICU icu-uc)', "pkg_check_modules(ICU icu-uc)\n\nfind_package(OpenCasCade)\nfind_package(llvm)\n" # from other PR stolen
         ln.gsub! '${MACPORTS_PREFIX}/lib', '/lib ${LLVM_LIBRARY_DIR} ${OCC_LIBRARY_DIR} ' + gcctxt # from other PR + gcc lib path
