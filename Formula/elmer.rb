@@ -16,11 +16,11 @@ class Elmer < Formula
   end
 
   depends_on "cmake" => :build
-  depends_on "freecad/freecad/opencascade@7.5.0"
-  depends_on "freecad/freecad/python@3.9.6"
-  depends_on "freecad/freecad/qt5152"
-  depends_on "freecad/freecad/qwtelmer"
-  depends_on "freecad/freecad/vtk@8.2.0"
+  depends_on "./opencascade@7.5.1"
+  depends_on "./python@3.9.7"
+  depends_on "./qt5152"
+  depends_on "./qwtelmer"
+  depends_on "./vtk@9.0.03"
   depends_on "gcc"
   depends_on macos: :high_sierra # no access to sierra test box
   depends_on "open-mpi"
@@ -34,8 +34,8 @@ class Elmer < Formula
 
     prefix_paths = ""
     prefix_paths << (Formula["#{@tap}/qt5152"].opt_prefix/"lib/cmake;")
-    prefix_paths << (Formula["#{@tap}/vtk@8.2.0"].opt_prefix/"lib/cmake;")
-    prefix_paths << (Formula["#{@tap}/opencascade@7.5.0"].opt_prefix/"lib/cmake;")
+    prefix_paths << (Formula["#{@tap}/vtk@9.0.3"].opt_prefix/"lib/cmake;")
+    prefix_paths << (Formula["#{@tap}/opencascade@7.5.1"].opt_prefix/"lib/cmake;")
 
     cmake_cflags = ""
     cmake_cflags << ('" -F' + Formula["#{@tap}/qwtelmer"].opt_prefix+"/lib/" + ' -framework qwt"')
