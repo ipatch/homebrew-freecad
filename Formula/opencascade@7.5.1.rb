@@ -1,4 +1,4 @@
-class OpencascadeAT753 < Formula
+class OpencascadeAT751 < Formula
   desc "3D modeling and numerical simulation software for CAD/CAM/CAE"
   homepage "https://github.com/Open-Cascade-SAS"
   # url "https://git.dev.opencascade.org/gitweb/?p=occt.git;a=snapshot;h=refs/tags/V7_5_3;sf=tgz"
