@@ -10,11 +10,11 @@ class Freecad < Formula
     sha256 "5ec0003c18df204f7b449d4ac0a82f945b41613a0264127de3ef16f6b2efa60f"
   end
 
-  bottle do
-    root_url "https://github.com/freecad/homebrew-freecad/releases/download/07.28.2021"
-    sha256 big_sur: "ea3f380ce4998d4fcb82d2dd7139957c4865b35dfbbab18d8d0479676e91aa14"
+  #bottle do
+  #  root_url "https://github.com/freecad/homebrew-freecad/releases/download/07.28.2021"
+  #  sha256 big_sur: "ea3f380ce4998d4fcb82d2dd7139957c4865b35dfbbab18d8d0479676e91aa14"
     # sha256 catalina: "8ef75eb7cea8ca34dc4037207fb213332b9ed27976106fd83c31de1433c2dd29"
-  end
+  #end
 
   option "with-debug", "Enable debug build"
   option "with-macos-app", "Build MacOS App bundle"

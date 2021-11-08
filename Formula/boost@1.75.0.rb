@@ -13,12 +13,12 @@ class BoostAT1750 < Formula
     regex(/>Version v?(\d+(?:\.\d+)+)</i)
   end
 
-  bottle do
-    root_url "https://github.com/FreeCAD/homebrew-freecad/releases/download/boost@1.75.0-1.75.0_1"
-    sha256 cellar: :any, big_sur:  "c06a2fa701e76bd328f8ddd4d5d2bc9eb82ac6491e400b3f2c345bf8c4a2be5d"
-    sha256 cellar: :any, catalina: "e11f4b4f6f06c130862533f3755a88fdf7cebce921c0bff0e1b0a0d48a6d8bb5"
-    sha256 cellar: :any, mojave:   "e05374614574f4f3a3bcc9734eebce31e965a70dc2d41df60376898115c79a86"
-  end
+  #bottle do
+  #  root_url "https://github.com/FreeCAD/homebrew-freecad/releases/download/boost@1.75.0-1.75.0_1"
+  #  sha256 cellar: :any, big_sur:  "c06a2fa701e76bd328f8ddd4d5d2bc9eb82ac6491e400b3f2c345bf8c4a2be5d"
+  #  sha256 cellar: :any, catalina: "e11f4b4f6f06c130862533f3755a88fdf7cebce921c0bff0e1b0a0d48a6d8bb5"
+  #  sha256 cellar: :any, mojave:   "e05374614574f4f3a3bcc9734eebce31e965a70dc2d41df60376898115c79a86"
+  #end
 
   depends_on "freecad/freecad/icu4c@67.1"
 

@@ -10,13 +10,13 @@ class CythonAT02921 < Formula
     url :stable
   end
 
-  bottle do
-    root_url "https://github.com/FreeCAD/homebrew-freecad/releases/download/cython@0.29.21-0.29.21_1"
-    rebuild 1
-    sha256 cellar: :any_skip_relocation, big_sur:  "b25ed00d95bada948d466edb02d6ecc45af4cf7cdfd5b6fd7fc3b9f53ef893b9"
-    sha256 cellar: :any_skip_relocation, catalina: "516d0f9c418a3985619f14398876b6c702b87c49658025c8dc85701e9d684220"
-    sha256 cellar: :any_skip_relocation, mojave:   "8bd71588569ae47d58aac39ee207bf11fd16e37b6e4185cda51122f274a10b00"
-  end
+  #bottle do
+  #  root_url "https://github.com/FreeCAD/homebrew-freecad/releases/download/cython@0.29.21-0.29.21_1"
+  #  rebuild 1
+  #  sha256 cellar: :any_skip_relocation, big_sur:  "b25ed00d95bada948d466edb02d6ecc45af4cf7cdfd5b6fd7fc3b9f53ef893b9"
+  #  sha256 cellar: :any_skip_relocation, catalina: "516d0f9c418a3985619f14398876b6c702b87c49658025c8dc85701e9d684220"
+  #  sha256 cellar: :any_skip_relocation, mojave:   "8bd71588569ae47d58aac39ee207bf11fd16e37b6e4185cda51122f274a10b00"
+  #end
 
   keg_only <<~EOS
     this formula is mainly used internally by other formulae.
