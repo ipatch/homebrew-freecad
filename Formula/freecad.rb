@@ -36,7 +36,7 @@ class Freecad < Formula
   depends_on "./med-file@4.1.0"
   depends_on "./nglib@6.2.2105"
   depends_on "./opencamlib"
-  depends_on "./opencascade@7.5.1"
+  depends_on "./opencascade@7.5.2"
   depends_on "./pivy"
   depends_on "./pyside2"
   depends_on "./pyside2-tools"
@@ -88,7 +88,7 @@ class Freecad < Formula
     prefix_paths << (Formula["./qt5152"].lib/"cmake;")
     prefix_paths << (Formula["./nglib@6.2.2105"].opt_prefix/"Contents/Resources;")
     prefix_paths << (Formula[@@vtk].lib/"cmake;")
-    prefix_paths << (Formula["./opencascade@7.5.1"].lib/"cmake;")
+    prefix_paths << (Formula["./opencascade@7.5.2"].lib/"cmake;")
     prefix_paths << (Formula["./med-file@4.1.0"].share/"cmake/;")
     prefix_paths << (Formula["./shiboken2@5.15.2"].lib/"cmake;")
     prefix_paths << (Formula["./pyside2"].lib/"cmake;")
