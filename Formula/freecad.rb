@@ -52,6 +52,7 @@ class Freecad < Formula
   depends_on "pkg-config"
   depends_on "webp"
   depends_on "xerces-c"
+  depends_on "openssl@1.1"
 
   def install
     # system "pip3", "install", "six" unless File.exist?("/usr/local/lib/python3.9/site-packages/six.py")
@@ -68,6 +69,8 @@ class Freecad < Formula
 
     # NOTE: bundle fixes, should integrated in freecad source code
     if build.with? 'macos-app'
+      mkdir 'src/MacAppBundle/FreeCAD.app/Contents/ssl'
+      File.write('src/MacAppBundle/FreeCAD.app/Contents/ssl/cert.pem', (Formula['openssl@1.1'].openssldir/'cert.pem').read)
       cmakelist = 'src/MacAppBundle/CMakeLists.txt'
       gccfra    = Formula['gcc']
       gcctxt    = gccfra.lib.to_s + '/gcc/' + gccfra.version.to_s.split('.')[0]
@@ -121,14 +124,34 @@ class Freecad < Formula
     args << "-DALLOW_SELF_SIGNED_CERTIFICATE=1" if build.with? "unsecured-cloud"
 
     system "node", "install", "-g", "app_dmg" if build.with? "packaging-utils"
+    
+    pth = "#{head? ? latest_head_prefix : prefix}/FreeCAD.app/Contents" if build.with? "macos-app"
 
     mkdir "Build" do
       system "cmake", *args, ".."
       system "make", "-j#{ENV.make_jobs}", "install"
     end
+    
+    if build.with? "macos-app"
+        File.rename "#{pth}/MacOS/FreeCAD", "#{pth}/MacOS/_freecad"
+        File.write "#{pth}/MacOS/FreeCAD", startup_script
+        system "chmod +x #{pth}/MacOS/FreeCAD"
+    end 
+    
     bin.install_symlink "../MacOS/FreeCAD" => "FreeCAD"
     bin.install_symlink "../MacOS/FreeCADCmd" => "FreeCADCmd"
     (lib/"python3.9/site-packages/homebrew-freecad-bundle.pth").write "#{prefix}/MacOS/\n"
+  end
+  
+  def startup_script
+    #very ugly, should be a resource
+    return '#!/usr/bin/env bash' + "\n" +
+           'export PREFIX=$(dirname "$(dirname "$0")")' + "\n" +
+           'export LANG="UTF-8"  # https://forum.freecadweb.org/viewtopic.php?f=22&t=42644' + "\n" +
+           'export SSL_CERT_FILE=${PREFIX}/ssl/cert.pem # https://forum.freecadweb.org/viewtopic.php?f=3&t=42825' + "\n" +
+           'export GIT_SSL_CAINFO=${PREFIX}/ssl/cert.pem' + "\n" +
+           '' + "\n" +
+           '"${PREFIX}/MacOS/_freecad" $@'  
   end
 
   def post_install
