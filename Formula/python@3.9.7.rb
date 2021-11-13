@@ -281,7 +281,7 @@ class PythonAT397 < Formula
 
     # Replace bundled setuptools/pip with our own.
     rm Dir["#{lib_cellar}/ensurepip/_bundled/{setuptools,pip}-*.whl"]
-    %w[setuptools pip gitpython gitdb smmap].each do |r|
+    %w[setuptools pip six gitpython gitdb smmap].each do |r|
       resource(r).stage do
         system whl_build/"bin/pip3", "wheel", *common_pip_args,
                                               "--wheel-dir=#{lib_cellar}/ensurepip/_bundled",
@@ -349,6 +349,7 @@ class PythonAT397 < Formula
            "--isolated",
            "--target=#{site_packages}",
            bundled/"setuptools-#{resource("setuptools").version}-py3-none-any.whl",
+           bundled/"six-#{resource("six").version}-py3-none-any.whl",
            bundled/"gitpython-#{resource("gitpython").version}-py3-none-any.whl",
            bundled/"gitdb-#{resource("gitdb").version}-py3-none-any.whl",
            bundled/"smmap-#{resource("smmap").version}-py3-none-any.whl",
