@@ -10,8 +10,7 @@
 
 ## Overview
 
-#### NOTE: This only a fork of homebrew-freecad, the original repository found you [here]
-(https://github.com/FreeCAD/homebrew-freecad)
+#### NOTE: This only a fork of homebrew-freecad, the original repository found you [here](https://github.com/FreeCAD/homebrew-freecad)
 
 #### NOTE: If you are looking for the current macOS builds, please download the latest build from [GitHub](https://github.com/FreeCAD/FreeCAD/releases)
 
