@@ -32,7 +32,7 @@ class LlvmAT1300 < Formula
     # We intentionally use Make instead of Ninja.
     # See: Homebrew/homebrew-core/issues/35513
     depends_on "cmake" => :build
-    depends_on "swig" => :build
+    depends_on "./swig@4.0.2" => :build
     depends_on "./python@3.9.7"
 
     uses_from_macos "libedit"
