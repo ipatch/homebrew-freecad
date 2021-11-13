@@ -349,7 +349,7 @@ class PythonAT397 < Formula
            "--isolated",
            "--target=#{site_packages}",
            bundled/"setuptools-#{resource("setuptools").version}-py3-none-any.whl",
-           bundled/"six-#{resource("six").version}-py3-none-any.whl",
+           bundled/"six-#{resource("six").version}-py2.py3-none-any.whl",
            bundled/"gitpython-#{resource("gitpython").version}-py3-none-any.whl",
            bundled/"gitdb-#{resource("gitdb").version}-py3-none-any.whl",
            bundled/"smmap-#{resource("smmap").version}-py3-none-any.whl",
