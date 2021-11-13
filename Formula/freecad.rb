@@ -137,6 +137,8 @@ class Freecad < Formula
         File.rename "#{pth}/MacOS/FreeCAD", "#{pth}/MacOS/_freecad"
         File.write "#{pth}/MacOS/FreeCAD", startup_script
         system "chmod +x #{pth}/MacOS/FreeCAD"
+        # libexec should be integrated in site-packages and not needed
+        system "rm -r #{pth}/libexec" if File.directory?("#{pth}/libexec")
     end 
     
     bin.install_symlink "../MacOS/FreeCAD" => "FreeCAD"
