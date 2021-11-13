@@ -10,9 +10,12 @@
 
 ## Overview
 
-The primary and frequent use case for this formula is for developers to conveniently install all the required FreeCAD dependencies to support FreeCAD development.
+#### NOTE: This only a fork of homebrew-freecad, the original repository found you [here]
+(https://github.com/FreeCAD/homebrew-freecad)
 
 #### NOTE: If you are looking for the current macOS builds, please download the latest build from [GitHub](https://github.com/FreeCAD/FreeCAD/releases)
+
+#### NOTE: This repository is experimental and used to create native arm64 FreeCAD application.
 
 ## Prerequisites
 
@@ -20,55 +23,83 @@ Install [homebrew](http://brew.sh)
 
 ## Installing FreeCAD dependencies (FreeCAD developers)
 
-Developers may find it convenient to simply install the pre-requisites prior to cloning the FreeCAD repo for development builds.
+The first step is tap this repository:
 
 ```
-brew tap FreeCAD/freecad
-brew install --only-dependencies freecad [--with-qt4] [--with-packaging-utils]
+brew tap ageeye/FreeCAD/freecad
 ```
 
-#### Install flags
-
-`--with-qt4 option` use this option to install Qt4 and associated dependencies (defaults to Qt 5.x)<br />
-`--with-packaging-utils` use this option to install the packaging utilities
-
-## Building The Current Release Version of FreeCAD
+We have not provided packages precompiled for arm Macs. We compile all formula from source:
 
 ```
-brew tap FreeCAD/freecad
-brew install freecad
+brew install -s ageeye/freecad/icu4c@69.1
+brew install -s ageeye/freecad/boost@1.76.0
+brew install -s ageeye/freecad/coin@4.0.0
+brew install -s ageeye/freecad/python@3.9.7
+brew install -s ageeye/freecad/python-tk@3.9.7
+brew install -s ageeye/freecad/boost-python3@1.76.0
 ```
 
-## Building HEAD Version of FreeCAD
+```
+brew install -s ageeye/freecad/numpy@1.21.2
+brew install -s ageeye/freecad/cython@0.29.24
+brew install -s ageeye/freecad/matplotlib
+```
 
 ```
-brew install --HEAD freecad
+brew install -s ageeye/freecad/med-file@4.1.0
+brew install -s ageeye/freecad/opencascade@7.5.3
+brew install -s ageeye/freecad/nglib@6.2.2105
+brew install -s ageeye/freecad/opencamlib
+brew install -s ageeye/freecad/pivy
+```
+
+```
+brew install -s ageeye/freecad/qt5152
+brew install -s ageeye/freecad/pyqt@5.15.2
+```
+
+```
+brew install -s ageeye/freecad/llvm@13.0.0
+brew install -s ageeye/freecad/shiboken2@5.15.2
+```
+
+```
+brew install -s ageeye/freecad/pyside2
+brew install -s ageeye/freecad/pyside2-tools
+brew install -s ageeye/freecad/sip@4.19.24
+brew install -s ageeye/freecad/swig@4.0.2
+brew install -s ageeye/freecad/tbb@2020_u3
+brew install -s ageeye/freecad/vtk@9.0.3
 ```
 
 ## Building macOS App
 
 ```
-brew install freecad --with-macos-app
+brew install ageeye/freecad/freecad --head --with-macos-app --with-vtk9
 ```
 
-## Continuous Integration Support
+## Know Issues
 
-The Travis CI system uses this freecad formula to build and test FreeCAD every time
-a change is made to the FreeCAD/FreeCAD repo meaning that the formula is very well
-tested itself.
+What ever, reinstall do not work:
+
+```
+brew reinstall ageeye/freecad/freecad
+```
+
+Please remove first freecad:
+
+```
+brew remove ageeye/freecad/freecad
+brew install ageeye/freecad/freecad --head --with-macos-app --with-vtk9
+```
+
+
 
 ## TODOs
 
-- [ ] presently the `python@3.9.6` tap formula installs `pip3` and `wheel3` which will not work if formula is set to `keg_only`
-    - look at the [formula cookbook / install section][1] for finding a way to possibly make the tap version of python `keg_only` while not raising an audit error in the process.
+..
 
-[1]: <https://docs.brew.sh/Formula-Cookbook#bininstall-foo>
-
-## Open Issues
-
-See [GitHub Issues][ghi]
-
-[ghi]: <https://github.com/FreeCAD/homebrew-freecad/issues>
 
 ## Recognition
 
