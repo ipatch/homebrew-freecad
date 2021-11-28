@@ -1,7 +1,7 @@
 class PythonoccCore < Formula
   desc "Pythonocc provides 3D modeling and dataexchange features. It is intended to CAD/PDM/PLM and BIM related development."
   homepage "https://www.pythonocc.org"
-  url "https://github.com/tpaviot/pythonocc-core.git", :using => :git
+  url "https://github.com/tpaviot/pythonocc-core.git", :using => :git, :revision => '9139918faddd6e1a5fed892eeb9104e99f6362b2'
   version "7.5.2"
 
   depends_on "./opencascade@7.5.2" => :required
