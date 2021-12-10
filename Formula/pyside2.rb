@@ -18,7 +18,7 @@ class Pyside2 < Formula
 
   depends_on "cmake" => :build
   depends_on "./python@3.9.7" => :build
-  depends_on "sphinx-doc" => :build if build.with? "docs"
+#  depends_on "sphinx-doc" => :build if build.with? "docs"
   depends_on "./qt5152"
   depends_on "./shiboken2@5.15.2"
 
