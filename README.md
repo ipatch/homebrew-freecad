@@ -47,7 +47,7 @@ brew install -s ageeye/freecad/matplotlib
 
 ```
 brew install -s ageeye/freecad/med-file@4.1.0
-brew install -s ageeye/freecad/opencascade@7.5.3
+brew install -s ageeye/freecad/opencascade@7.5.2
 brew install -s ageeye/freecad/nglib@6.2.2105
 brew install -s ageeye/freecad/opencamlib
 brew install -s ageeye/freecad/pivy
