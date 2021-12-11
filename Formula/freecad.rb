@@ -97,8 +97,8 @@ class Freecad < Formula
     prefix_paths << (Formula["./shiboken2@5.15.2"].lib/"cmake;")
     prefix_paths << (Formula["./pyside2"].lib/"cmake;")
     prefix_paths << (Formula["./coin@4.0.0"].lib/"cmake;")
-    prefix_paths << (Formula["./boost@1.76.0"].lib/"cmake;")
-    prefix_paths << (Formula["./boost-python3@1.76.0"].lib/"cmake;")
+#    prefix_paths << (Formula["./boost@1.76.0"].lib/"cmake;")
+#    prefix_paths << (Formula["./boost-python3@1.76.0"].lib/"cmake;")
 
     # Disable function which are not available for Apple Silicon
     act = Hardware::CPU.arm? ? "OFF" : "ON"
