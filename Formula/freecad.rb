@@ -107,8 +107,7 @@ class Freecad < Formula
     args = std_cmake_args + %W[
       -DBUILD_QT5=ON
       -DUSE_PYTHON3=1
-      -DCMAKE_CXX_STANDARD=14
-      -DBUILD_ENABLE_CXX_STD:STRING=C++14
+      -DBUILD_ENABLE_CXX_STD=C++17
       -DBUILD_FEM_NETGEN=1
       -DBUILD_FEM=1
       -DBUILD_FEM_NETGEN:BOOL=ON
