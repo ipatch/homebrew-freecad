@@ -85,6 +85,23 @@ class PythonAT397 < Formula
     url "https://files.pythonhosted.org/packages/21/2d/39c6c57032f786f1965022563eec60623bb3e1409ade6ad834ff703724f3/smmap-5.0.0.tar.gz"
     sha256 "c840e62059cd3be204b0c9c9f74be2c09d5648eddd4580d9314c3ecde0b30936"
   end
+  
+  resource "markdown" do
+    url "https://files.pythonhosted.org/packages/15/06/d60f21eda994b044cbd496892d4d4c5c708aa597fcaded7d421513cb219b/Markdown-3.3.6.tar.gz"
+    sha256 "76df8ae32294ec39dcf89340382882dfa12975f87f45c3ed1ecdb1e8cefc7006"
+  end
+  
+  resource "importlib-metadata" do
+    url "https://files.pythonhosted.org/packages/50/05/fef7fbb7e781e0632ebba4e6e37bcc88b9615e76338850dc31435091ddc0/importlib_metadata-4.10.0.tar.gz"
+    sha256 "92a8b58ce734b2a4494878e0ecf7d79ccd7a128b5fc6014c401e0b61f006f0f6"
+    version "0.0.0" # version fix
+  end
+  
+  resource "zipp" do
+    url "https://files.pythonhosted.org/packages/02/bf/0d03dbdedb83afec081fefe86cae3a2447250ef1a81ac601a9a56e785401/zipp-3.6.0.tar.gz"
+    sha256 "71c644c5369f4a6e07636f0aa966270449561fcea2e3d6747b8d23efaa9d7832"
+    version "0.0.0" # version fix
+  end
 
   # Link against libmpdec.so.3, update for mpdecimal.h symbol cleanup.
   patch do
@@ -281,7 +298,7 @@ class PythonAT397 < Formula
 
     # Replace bundled setuptools/pip with our own.
     rm Dir["#{lib_cellar}/ensurepip/_bundled/{setuptools,pip}-*.whl"]
-    %w[setuptools pip six gitpython gitdb smmap].each do |r|
+    %w[setuptools pip six gitpython gitdb smmap markdown importlib-metadata zipp].each do |r|
       resource(r).stage do
         system whl_build/"bin/pip3", "wheel", *common_pip_args,
                                               "--wheel-dir=#{lib_cellar}/ensurepip/_bundled",
@@ -353,6 +370,9 @@ class PythonAT397 < Formula
            bundled/"gitpython-#{resource("gitpython").version}-py3-none-any.whl",
            bundled/"gitdb-#{resource("gitdb").version}-py3-none-any.whl",
            bundled/"smmap-#{resource("smmap").version}-py3-none-any.whl",
+           bundled/"markdown-#{resource("markdown").version}-py3-none-any.whl",
+           bundled/"importlib_metadata-#{resource("importlib-metadata").version}-py3-none-any.whl",
+           bundled/"zipp-#{resource("zipp").version}-py3-none-any.whl",
            bundled/"pip-#{resource("pip").version}-py3-none-any.whl",
            libexec/"wheel-#{resource("wheel").version}-py2.py3-none-any.whl"
 
