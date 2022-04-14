@@ -32,7 +32,7 @@ We have not provided packages precompiled for arm Macs. We compile all formula f
 
 ```
 brew install -s ageeye/freecad/icu4c@70.1
-brew install -s ageeye/freecad/boost@1.76.0
+brew install -s ageeye/freecad/boost@1.78.0
 brew install -s ageeye/freecad/coin@4.0.0
 brew install -s ageeye/freecad/python@3.9.7
 brew install -s ageeye/freecad/python-tk@3.9.7
