@@ -14,7 +14,7 @@ class VtkAT903 < Formula
  #  end
 
    depends_on "cmake" => [:build, :test]
-   depends_on "./boost@1.76.0"
+   depends_on "./boost@1.78.0"
    depends_on "double-conversion"
    depends_on "eigen"
    depends_on "fontconfig"

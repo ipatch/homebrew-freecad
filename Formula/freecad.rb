@@ -30,7 +30,7 @@ class Freecad < Formula
   depends_on "ccache" => :build
   depends_on "cmake" => :build
   depends_on "./boost-python3@1.76.0"
-  depends_on "./boost@1.76.0"
+  depends_on "./boost@1.78.0"
   depends_on "./coin@4.0.0"
   depends_on "./matplotlib"
   depends_on "./med-file@4.1.0"

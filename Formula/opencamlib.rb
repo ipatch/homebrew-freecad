@@ -14,7 +14,7 @@ class Opencamlib < Formula
 
   depends_on "cmake" => :build
   depends_on "./boost-python3@1.76.0" => :build
-  depends_on "./boost@1.76.0" => :build
+  depends_on "./boost@1.78.0" => :build
 
   def install
     args = std_cmake_args + %W[
