@@ -13,8 +13,7 @@ class CythonAT02928 < Formula
 
   def install
     py = Formula["./python@3.10.2"]
-    xy = Language::Python.major_minor_version py.opt_bin/"python3"
-    ENV.prepend_create_path "PYTHONPATH", libexec/"lib/python#{xy}/site-packages:#{py.site_packages}"
+    ENV.prepend_create_path "PYTHONPATH", py.site_packages
     system py.opt_bin/"python3", *Language::Python.setup_install_args(libexec)
 
     bin.install Dir[libexec/"bin/*"]
