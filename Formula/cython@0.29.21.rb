@@ -23,7 +23,7 @@ class CythonAT02921 < Formula
     Users are advised to use `pip` to install cython
   EOS
 
-  depends_on "freecad/freecad/python@3.9.6"
+  depends_on "./python@3.9.6"
 
   def install
     xy = Language::Python.major_minor_version Formula["#{@tap}/python@3.9.6"].opt_bin/"python3"
