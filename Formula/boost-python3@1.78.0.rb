@@ -10,7 +10,7 @@ class BoostPython3AT1780 < Formula
       formula "./boost@1.7.8"
     end
 
-   depends_on "./numpy@1.21.2" => :build
+   depends_on "./numpy@1.22.3" => :build
    depends_on "./boost@1.78.0"
    depends_on "./python@3.10.2"
 
