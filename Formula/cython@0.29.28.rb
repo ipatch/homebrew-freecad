@@ -12,9 +12,11 @@ class CythonAT02928 < Formula
   depends_on "./python@3.10.2"
 
   def install
-    py = Formula["./python@3.10.2"]
-    ENV.prepend_create_path "PYTHONPATH", py.site_packages
-    system py.opt_bin/"python3", *Language::Python.setup_install_args(libexec)
+    python = Formula["./python@3.10.2"].opt_bin/"python3"
+    py = libexec/Language::Python.site_packages(python)
+    ENV.prepend_create_path "PYTHONPATH", py
+    system python, *Language::Python.setup_install_args(libexec),
+    "--install-lib=#{py}"
 
     bin.install Dir[libexec/"bin/*"]
     bin.env_script_all_files(libexec/"bin", PYTHONPATH: ENV["PYTHONPATH"])
