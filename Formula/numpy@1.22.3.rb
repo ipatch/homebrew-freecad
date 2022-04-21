@@ -28,7 +28,8 @@ class NumpyAT1223 < Formula
     Pathname("site.cfg").write config
     python = Formula["./python@3.10.2"].opt_bin/"python3"
     py = libexec/Language::Python.site_packages(python)
-    ENV.prepend_create_path "PYTHONPATH", py
+    xy = Language::Python.major_minor_version python
+    ENV.prepend_create_path "PYTHONPATH", Formula["./cython28.29"].opt_libexec/"lib/python#{xy}/site-packages"
     system python, "setup.py", "build",
         "--fcompiler=gfortran", "--parallel=#{ENV.make_jobs}"
     system python, *Language::Python.setup_install_args(prefix), "--install-lib=#{py}"
