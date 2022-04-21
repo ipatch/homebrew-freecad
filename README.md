@@ -34,14 +34,14 @@ We have not provided packages precompiled for arm Macs. We compile all formula f
 brew install -s ageeye/freecad/icu4c@70.1
 brew install -s ageeye/freecad/boost@1.78.0
 brew install -s ageeye/freecad/coin@4.0.0
-brew install -s ageeye/freecad/python@3.9.7
-brew install -s ageeye/freecad/python-tk@3.9.7
-brew install -s ageeye/freecad/boost-python3@1.76.0
+brew install -s ageeye/freecad/python@3.10.2
+brew install -s ageeye/freecad/python-tk@3.10.2
+brew install -s ageeye/freecad/boost-python3@1.78.0
 ```
 
 ```
 brew install -s ageeye/freecad/numpy@1.21.2
-brew install -s ageeye/freecad/cython@0.29.24
+brew install -s ageeye/freecad/cython@0.29.28
 brew install -s ageeye/freecad/matplotlib
 ```
 
