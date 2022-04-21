@@ -26,12 +26,12 @@ class NumpyAT1223 < Formula
     EOS
 
     Pathname("site.cfg").write config
-    py = Formula["./python@3.10.2"]
-    version = Language::Python.major_minor_version py.opt_bin/"python3"
-    ENV.prepend_create_path "PYTHONPATH", Formula["./cython@0.29.28"].opt_libexec/"lib/python#{version}/site-packages:#{py.site_packages}"
-    system py.opt_bin/"python3", "setup.py", "build",
+    python = Formula["./python@3.10.2"].opt_bin/"python3"
+    py = libexec/Language::Python.site_packages(python)
+    ENV.prepend_create_path "PYTHONPATH", py
+    system python, "setup.py", "build",
         "--fcompiler=gfortran", "--parallel=#{ENV.make_jobs}"
-    system py.opt_bin/"python3", *Language::Python.setup_install_args(prefix)
+    system python, *Language::Python.setup_install_args(prefix), "--install-lib=#{py}"
   end
 
   test do
