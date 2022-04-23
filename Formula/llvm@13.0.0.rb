@@ -1,8 +1,8 @@
 class LlvmAT1300 < Formula
     desc "Next-gen compiler infrastructure"
     homepage "https://llvm.org/"
-    url "https://github.com/llvm/llvm-project/releases/download/llvmorg-13.0.0/llvm-project-13.0.0.src.tar.xz"
-    sha256 "6075ad30f1ac0e15f07c1bf062c1e1268c241d674f11bd32cdf0e040c71f2bf3"
+    url "https://github.com/llvm/llvm-project/releases/download/llvmorg-13.0.1/llvm-project-13.0.1.src.tar.xz"
+    sha256 "326335a830f2e32d06d0a36393b5455d17dc73e0bd1211065227ee014f92cbf8"
     # The LLVM Project is under the Apache License v2.0 with LLVM Exceptions
     license "Apache-2.0" => { with: "LLVM-exception" }
     revision 1
