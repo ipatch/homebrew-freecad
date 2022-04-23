@@ -18,6 +18,11 @@ class Shiboken2AT5152 < Formula
   depends_on "./numpy@1.22.3"
   depends_on "./qt5152"
   depends_on "./llvm@13.0.0"
+  
+  patch do
+    url "https://src.fedoraproject.org/fork/vstinner/rpms/python-pyside2/raw/ce03f8cb03186129f9f36b5469933267b0fc10d8/f/python310.patch"
+    sha256 "9d7600f0fff8ed5d3cd2be1313c987a3d31fecdfe2fe14b917fd137c5e5ecf8f"
+  end
 
   def install
     ENV["LLVM_INSTALL_DIR"] = Formula["./llvm@13.0.0"].opt_prefix
