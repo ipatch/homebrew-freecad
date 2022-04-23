@@ -36,16 +36,9 @@ end
 class Matplotlib < Formula
   desc "Python 2D plotting library"
   homepage "https://matplotlib.org"
-  url "https://files.pythonhosted.org/packages/21/37/197e68df384ff694f78d687a49ad39f96c67b8d75718bc61503e1676b617/matplotlib-3.4.3.tar.gz"
-  sha256 "fc4f526dfdb31c9bd6b8ca06bf9fab663ca12f3ec9cdf4496fb44bc680140318"
+  url "https://files.pythonhosted.org/packages/8a/46/425a44ab9a71afd2f2c8a78b039c1af8ec21e370047f0ad6e43ca819788e/matplotlib-3.5.1.tar.gz"
+  sha256 "b2e9810e09c3a47b73ce9cab5a72243a1258f61e7900969097a817232246ce1c"
   head "https://github.com/matplotlib/matplotlib.git"
-
-  #bottle do
-    # root_url "https://github.com/freecad/homebrew-freecad/releases/download/07.28.2021"
-    # sha256 cellar: :any, big_sur:   "150759a0b8ea4e159e0a4ed1229340775e90ab6b47ab397fe1ec040250ceef94"
-    #sha256 cellar: :any, catalina:  "7f3d19de027ab6dd81e6b6021315682bcfe54f410bb29a1fb1cea0ba0a8515eb"
-    # sha256 cellar: :any, mojave:    "5331f0dca64b5d8a583944c6d597937833943ebc02ab3da54762baccd6d38620"
-  # end
 
   option "with-cairo", "Build with cairo backend support"
   option "with-tex", "Build with tex support"
@@ -55,8 +48,8 @@ class Matplotlib < Formula
   depends_on NoExternalPyCXXPackage => :build
   depends_on "pkg-config" => :build
   depends_on DvipngRequirement if build.with? "tex"
-  depends_on "./numpy@1.21.2"
-  depends_on "./python@3.9.7"
+  depends_on "./numpy@1.22.3"
+  depends_on "./python@3.10.2"
   depends_on "freetype"
   depends_on "ghostscript"
   #depends_on "gtk+3"
@@ -71,8 +64,8 @@ class Matplotlib < Formula
   cxxstdlib_check :skip
 
   resource "setuptools" do
-    url "https://files.pythonhosted.org/packages/1e/5c/3d7b3d91a86d71faf5038c5d259ed36b5d05b7804648e2c43251d574a6e6/setuptools-58.2.0.tar.gz"
-    sha256 "2c55bdb85d5bb460bd2e3b12052b677879cffcf46c0c688f2e5bf51d36001145"
+    url "https://files.pythonhosted.org/packages/8f/89/9fec81ec84737c925a1ee992af2c6c7153aec4051c26afeadd6b822354d2/setuptools-60.6.0.tar.gz"
+    sha256 "eb83b1012ae6bf436901c2a2cee35d45b7260f31fd4b65fd1e50a9f99c11d7f8"
   end
 
   resource "Cycler" do
@@ -95,17 +88,12 @@ class Matplotlib < Formula
     sha256 "acad2d8b20a1af07d4e4c9d2e9285c5ed9104354062f275f3fcd88dcef4f1326"
   end
 
-  resource "six" do
-    url "https://files.pythonhosted.org/packages/71/39/171f1c67cd00715f190ba0b100d606d440a28c93c7714febeca8b79af85e/six-1.16.0.tar.gz"
-    sha256 "1e61c37477a1626458e36f7b1d82aa5c9b094fa4802892072e49de9c60c4c926"
-  end
-
   def install
     # NOTE: freecad python no pip3 bin in opt dir use Cellar
     # NOTE: pytz is already inculded by the resources.
     #system "#{HOMEBREW_PREFIX}/Cellar/python@3.9.7/3.9.7_1/bin/pip3", "install", "pytz"
     #system Formula["./python@3.9.7"].opt_bin.to_s+"/python3", "-mpip", "install", "--prefix=#{prefix}", "."
-    py = Formula["./python@3.9.7"]
+    py = Formula["./python@3.10.2"]
     ENV.prepend_create_path "PYTHONPATH", py.site_packages
     system py.opt_bin/"python3", *Language::Python.setup_install_args(prefix)
     version = "3.9"
@@ -125,7 +113,7 @@ class Matplotlib < Formula
     end
     (lib/"python#{version}/site-packages/homebrew-matplotlib-bundle.pth").write "#{bundle_path}\n"
 
-    system Formula["./python@3.9.7"].opt_bin.to_s+"/python3", *Language::Python.setup_install_args(prefix)
+    system Formula["./python@3.10.2"].opt_bin.to_s+"/python3", *Language::Python.setup_install_args(prefix)
   end
 
   def caveats
