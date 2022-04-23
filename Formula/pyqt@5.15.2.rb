@@ -18,7 +18,7 @@ class PyqtAT5152 < Formula
 
   keg_only "also provided by core"
 
-  depends_on "./python@3.9.7"
+  depends_on "./python@3.10.2"
   depends_on "./qt5152"
   depends_on "./sip@4.19.24"
 
@@ -28,7 +28,7 @@ class PyqtAT5152 < Formula
   end
 
   def install
-    version = Language::Python.major_minor_version Formula["./python@3.9.7"].opt_bin/"python3"
+    version = Language::Python.major_minor_version Formula["./python@3.10.2"].opt_bin/"python3"
     args = ["--confirm-license",
             "--bindir=#{bin}",
             "--destdir=#{lib}/python#{version}/site-packages",
@@ -41,10 +41,10 @@ class PyqtAT5152 < Formula
             "QMAKE_MACOSX_DEPLOYMENT_TARGET=#{MacOS.version}",
             "--designer-plugindir=#{pkgshare}/plugins",
             "--qml-plugindir=#{pkgshare}/plugins",
-            "--pyuic5-interpreter=#{Formula["./python@3.9.7"].opt_bin}/python3",
+            "--pyuic5-interpreter=#{Formula["./python@3.10.2"].opt_bin}/python3",
             "--verbose"]
 
-    system Formula["#{@tap}/python@3.9.7"].opt_bin/"python3", "configure.py", *args
+    system Formula["#{@tap}/python@3.10.2"].opt_bin/"python3", "configure.py", *args
     system "make"
     ENV.deparallelize { system "make", "install" }
   end
@@ -53,7 +53,7 @@ class PyqtAT5152 < Formula
     system "#{bin}/pyuic5", "--version"
     system "#{bin}/pylupdate5", "-version"
 
-    system Formula["./python@3.9.7"].opt_bin/"python3", "-c", "import PyQt5"
+    system Formula["./python@3.10.2"].opt_bin/"python3", "-c", "import PyQt5"
     %w[
       Gui
       Location
