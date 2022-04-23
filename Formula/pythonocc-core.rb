@@ -4,8 +4,9 @@ class PythonoccCore < Formula
   url "https://github.com/tpaviot/pythonocc-core.git", :using => :git, :revision => '86c5f52647e779b1d0a5209d9d06eb6d3efd6d5b'
   version "7.5.2"
 
-  depends_on "./opencascade@7.5.3" => :required
+  depends_on "./opencascade@7.5.2" => :required
   depends_on "cmake" => :build
+  depends_on "./swig@4.0.2" => :build
   depends_on "./python@3.10.2"
 
   def install
