@@ -16,10 +16,13 @@ class Pivy < Formula
 
   depends_on "./swig@4.0.2" => :build
   depends_on "cmake" => :build
-  depends_on "./python@3.9.7" => :build
+  depends_on "./python@3.10.2" => :build
   depends_on "./coin@4.0.0"
 
   def install
-    system "python3", "setup.py", "install", "--prefix=#{prefix}"
+    python = Formula["./python@3.10.2"].opt_bin/"python3"
+    py = libexec/Language::Python.site_packages(python)
+    ENV.prepend_create_path "PYTHONPATH", py
+    system python, "setup.py", "install", "--prefix=#{prefix}"
   end
 end
