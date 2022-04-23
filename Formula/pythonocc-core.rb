@@ -22,7 +22,7 @@ class PythonoccCore < Formula
     end    
     
     mkdir "Build" do
-     system "cmake", '-DOCE_LIB_PATH=' + Formula["./opencascade@7.5.3"].lib, '-DOCE_INCLUDE_PATH=' + Formula["./opencascade@7.5.3"].include + '/opencascade', *std_cmake_args , ".."
+     system "cmake", '-DOCE_LIB_PATH=' + Formula["./opencascade@7.5.2"].lib, '-DOCE_INCLUDE_PATH=' + Formula["./opencascade@7.5.2"].include + '/opencascade', *std_cmake_args , ".."
      system "make", "-j#{ENV.make_jobs}"
      system "make", "install"
     end
