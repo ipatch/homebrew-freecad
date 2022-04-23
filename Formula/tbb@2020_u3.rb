@@ -40,7 +40,7 @@ class TbbAT2020U3 < Formula
       ENV["TBBROOT"] = prefix
       python = Formula["./python@3.10.2"].opt_bin/"python3"
       py = libexec/Language::Python.site_packages(python)
-      ENV.prepend_create_path "PYTHONPATH", python
+      ENV.prepend_create_path "PYTHONPATH", py
       system python, *Language::Python.setup_install_args(prefix), "--install-lib=#{py}"
       # system "/usr/local/bin/python3", *Language::Python.setup_install_args(prefix)
     end
