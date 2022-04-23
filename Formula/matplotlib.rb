@@ -93,10 +93,12 @@ class Matplotlib < Formula
     # NOTE: pytz is already inculded by the resources.
     #system "#{HOMEBREW_PREFIX}/Cellar/python@3.9.7/3.9.7_1/bin/pip3", "install", "pytz"
     #system Formula["./python@3.9.7"].opt_bin.to_s+"/python3", "-mpip", "install", "--prefix=#{prefix}", "."
-    py = Formula["./python@3.10.2"]
-    ENV.prepend_create_path "PYTHONPATH", py.site_packages
-    system py.opt_bin/"python3", *Language::Python.setup_install_args(prefix)
-    version = "3.9"
+    python = Formula["./python@3.10.2"].opt_bin/"python3"
+    py = libexec/Language::Python.site_packages(python)
+    ENV.prepend_create_path "PYTHONPATH", py
+    system python, *Language::Python.setup_install_args(libexec),
+    "--install-lib=#{py}"
+    version = "3.10"
     bundle_path = libexec/"lib/python#{version}/site-packages"
     bundle_path.mkpath
     ENV.prepend_path "PYTHONPATH", bundle_path
@@ -108,12 +110,12 @@ class Matplotlib < Formula
     # p(*Language::Python.setup_install_args(libexec))
     res.each do |r|
       resource(r).stage do
-        system py.opt_bin/"python3", *Language::Python.setup_install_args(libexec)
+        system python, *Language::Python.setup_install_args(libexec), "--install-lib=#{py}"
       end
     end
     (lib/"python#{version}/site-packages/homebrew-matplotlib-bundle.pth").write "#{bundle_path}\n"
 
-    system Formula["./python@3.10.2"].opt_bin.to_s+"/python3", *Language::Python.setup_install_args(prefix)
+    system python, *Language::Python.setup_install_args(prefix), "--install-lib=#{py}"
   end
 
   def caveats
