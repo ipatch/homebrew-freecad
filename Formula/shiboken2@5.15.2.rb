@@ -14,8 +14,8 @@ class Shiboken2AT5152 < Formula
   keg_only :versioned_formula # NOTE: will conflict with other shiboken2 installs
 
   depends_on "cmake" => :build
-  depends_on "./python@3.9.7" => :build
-  depends_on "./numpy@1.21.2"
+  depends_on "./python@3.10.2" => :build
+  depends_on "./numpy@1.22.3"
   depends_on "./qt5152"
   depends_on "./llvm@13.0.0"
 
@@ -23,14 +23,14 @@ class Shiboken2AT5152 < Formula
     ENV["LLVM_INSTALL_DIR"] = Formula["./llvm@13.0.0"].opt_prefix
 
     mkdir "macbuild#{version}" do
-      pyhome = `#{Formula["./python@3.9.7"].opt_bin}/python3.9-config --prefix`.chomp
-      py_library = "#{pyhome}/lib/libpython3.9.dylib"
-      py_include = "#{pyhome}/include/python3.9"
+      pyhome = `#{Formula["./python@3.10.2"].opt_bin}/python3.10-config --prefix`.chomp
+      py_library = "#{pyhome}/lib/libpython3.10.dylib"
+      py_include = "#{pyhome}/include/python3.10"
       args = std_cmake_args
       # Building the tests, is effectively a test of Shiboken
       args << "-DBUILD_TYPE=Release"
       args << "-DBUILD_TESTS:BOOL=OFF"
-      args << "-DPYTHON_EXECUTABLE=#{pyhome}/bin/python3.9"
+      args << "-DPYTHON_EXECUTABLE=#{pyhome}/bin/python3.10"
       args << "-DPYTHON_LIBRARY=#{py_library}"
       args << "-DPYTHON_INCLUDE_DIR=#{py_include}"
       args << "../sources/shiboken2"
