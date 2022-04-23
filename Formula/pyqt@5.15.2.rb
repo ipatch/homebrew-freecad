@@ -35,7 +35,7 @@ class PyqtAT5152 < Formula
             "--stubsdir=#{lib}/python#{version}/site-packages/PyQt5",
             "--sipdir=#{share}/sip/Qt5",
             # sip.h could not be found automatically
-            "--sip-incdir=#{Formula["./sip@4.19.24"].opt_include}",
+            "--sip-incdir=#{Formula["./sip@4.19.25"].opt_include}",
             "--qmake=#{Formula["./qt5152"].bin}/qmake",
             # Force deployment target to avoid libc++ issues
             "QMAKE_MACOSX_DEPLOYMENT_TARGET=#{MacOS.version}",
