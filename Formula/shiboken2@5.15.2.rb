@@ -61,10 +61,8 @@ end
 
 #https://code.qt.io/cgit/pyside/pyside-setup.git/commit/sources/shiboken2/libshiboken/pep384impl.cpp?h=v5.15.2.1&id=298cfb2d4a9674ed00b3769fa396a292c075c51c
 __END__
-diff --git a/sources/shiboken2/libshiboken/pep384impl.cpp b/sources/shiboken2/libshiboken/pep384impl.cpp
-index cb8042561..66df0fd94 100644
---- a/sources/shiboken2/libshiboken/pep384impl.cpp
-+++ b/sources/shiboken2/libshiboken/pep384impl.cpp
+--- ./sources/shiboken2/libshiboken/pep384impl.cpp.old
++++ ./sources/shiboken2/libshiboken/pep384impl.cpp
 @@ -754,11 +754,13 @@ _Pep_PrivateMangle(PyObject *self, PyObject *name)
  #ifndef Py_LIMITED_API
      return _Py_Mangle(privateobj, name);
