@@ -64,7 +64,7 @@ __END__
 --- ./sources/shiboken2/libshiboken/pep384impl.cpp.old
 +++ ./sources/shiboken2/libshiboken/pep384impl.cpp
 @@ -754,11 +754,13 @@ _Pep_PrivateMangle(PyObject *self, PyObject *name)
- #ifndef Py_LIMITED_API
+ #ifndef PY_VERSION_HEX >= 0x030a0000
      return _Py_Mangle(privateobj, name);
  #else
 -    // For some reason, _Py_Mangle is not in the Limited API. Why?
