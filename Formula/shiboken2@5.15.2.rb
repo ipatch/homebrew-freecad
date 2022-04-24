@@ -26,7 +26,7 @@ class Shiboken2AT5152 < Formula
 
   def install
     
-    inreplace '/sources/shiboken2/libshiboken/pep384impl.cpp' do |s|
+    inreplace './sources/shiboken2/libshiboken/pep384impl.cpp' do |s|
       s.gsub! 'Py_LIMITED_API', 'PY_VERSION_HEX >= 0x030a0000'
       s.gsub! 'size_t plen = PyUnicode_GET_LENGTH(privateobj);', 'size_t plen = PyUnicode_GET_LENGTH(privateobj.object());'
       s.gsub! "while (PyUnicode_READ_CHAR(privateobj, ipriv) == '_')", "while (PyUnicode_READ_CHAR(privateobj.object(), ipriv) == '_')"
