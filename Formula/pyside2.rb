@@ -1,9 +1,8 @@
 class Pyside2 < Formula
   desc "Python bindings for Qt5 and greater"
   homepage "https://wiki.qt.io/PySide2"
-  url "http://code.qt.io/cgit/pyside/pyside-setup.git",
-    tag:      "v5.15.2",
-    revision: "ef19637b7eab165accb8c3b0686061b21745ab74"
+  url "https://download.qt.io/official_releases/QtForPython/pyside2/PySide2-5.15.2-src/pyside-setup-opensource-src-5.15.2.tar.xz"
+  sha256 "b306504b0b8037079a8eab772ee774b9e877a2d84bab2dbefbe4fa6f83941418"
   license all_of: ["GFDL-1.3-only", "GPL-2.0-only", "GPL-3.0-only", "LGPL-2.1-only", "LGPL-3.0-only"]
   head "http://code.qt.io/cgit/pyside/pyside-setup.git", branch: "v5.15.2"
 
@@ -16,6 +15,11 @@ class Pyside2 < Formula
   depends_on "./shiboken2@5.15.2"
 
   conflicts_with "pyside@2", because: "non app bundle of freecad could use wrong version"
+  
+  patch do
+    url "https://src.fedoraproject.org/rpms/python-pyside2/raw/1f7e56d4f8320d98e59d9291ddab0451a436c7bf/f/python3.10.patch"
+    sha256 "dd18a7ed1d4196b48ddfd7cf1dcbebe4c600dcedb45baba4c852131e221cf4bc"
+  end
 
   def install
     ENV.cxx11
