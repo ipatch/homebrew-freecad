@@ -45,6 +45,11 @@ class SipAT661 < Formula
     url "https://files.pythonhosted.org/packages/be/ba/1f744cdc819428fc6b5084ec34d9b30660f6f9daaf70eead706e3203ec3c/toml-0.10.2.tar.gz"
     sha256 "b3bda1d108d5dd99f4a20d24d9c348e91c4db7ab1b749200bded2f839ccbe68f"
   end
+  
+  resource "pyqtbuilder" do
+    url "https://files.pythonhosted.org/packages/8b/5f/1bd49787262ddce37b826ef49dcccf5a9970facf0ed363dee5ee233e681d/PyQt-builder-1.12.2.tar.gz"
+    sha256 "f62bb688d70e0afd88c413a8d994bda824e6cebd12b612902d1945c5a67edcd7"
+  end
 
   # def install
   #   python = Formula["python@3.9.6"]
