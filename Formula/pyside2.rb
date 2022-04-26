@@ -36,7 +36,7 @@ class Pyside2 < Formula
     py_library = "#{pyhome}/lib/libpython3.10.dylib"
     py_include = "#{pyhome}/include/python3.10"
 
-    mkdir "macbuild3.8" do
+    mkdir "macbuild#{version}" do
       ENV["LLVM_INSTALL_DIR"] = Formula["./llvm@13.0.0"].opt_prefix
       ENV["CMAKE_PREFIX_PATH"] = Formula["./shiboken2@5.15.2"].opt_prefix + "/lib/cmake"
       args = std_cmake_args + %W[
