@@ -82,7 +82,7 @@ class VtkAT903 < Formula
        -DVTK_INSTALL_PYTHON_MODULE_DIR=#{lib}/python#{pyver}/site-packages
        -DVTK_QT_VERSION:STRING=5
        -DVTK_WRAP_PYTHON_SIP=ON
-       -DSIP_PYQT_DIR='#{Formula["./pyqt@5.15.3"].opt_share}/sip'
+       -DSIP_PYQT_DIR='#{Formula["./pyqt@5.15.6"].opt_share}/sip'
      ]
 
      mkdir "build" do
