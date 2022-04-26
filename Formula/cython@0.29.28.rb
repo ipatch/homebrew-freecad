@@ -10,6 +10,11 @@ class CythonAT02928 < Formula
   EOS
 
   depends_on "./python@3.10.2"
+  
+  patch do
+    url "https://github.com/python/cpython/commit/56f031ec5281723b7c617edfa5748f2ae6a4c347.patch"
+    sha256 "88f68af784f03aa1a8eda1475fceb965652a18ea9e32fbb51f4992a2a6d5da1c"
+  end
 
   def install
     python = Formula["./python@3.10.2"].opt_bin/"python3"
