@@ -29,7 +29,7 @@ class VtkAT903 < Formula
    depends_on "lz4"
    depends_on "netcdf"
    depends_on "pugixml"
-   depends_on "./pyqt@5.15.3"
+   depends_on "./pyqt@5.15.6"
    depends_on "./python@3.10.2"
    depends_on "./qt5153"
    depends_on "sqlite"
