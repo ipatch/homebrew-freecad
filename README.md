@@ -54,13 +54,13 @@ brew install -s ageeye/freecad/pivy
 ```
 
 ```
-brew install -s ageeye/freecad/qt5152
-brew install -s ageeye/freecad/pyqt@5.15.2
+brew install -s ageeye/freecad/qt5153
+brew install -s ageeye/freecad/pyqt@5.15.3
 ```
 
 ```
 brew install -s ageeye/freecad/llvm@13.0.0
-brew install -s ageeye/freecad/shiboken2@5.15.2
+brew install -s ageeye/freecad/shiboken2@5.15.3
 ```
 
 ```
