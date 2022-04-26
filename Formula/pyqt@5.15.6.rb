@@ -59,25 +59,30 @@ class PyqtAT5156 < Formula
    end
 
   def install
-    version = Language::Python.major_minor_version Formula["./python@3.10.2"].opt_bin/"python3"
-    args = ["--confirm-license",
-            "--bindir=#{bin}",
-            "--destdir=#{lib}/python#{version}/site-packages",
-            "--stubsdir=#{lib}/python#{version}/site-packages/PyQt5",
-            "--sipdir=#{share}/sip/Qt5",
-            # sip.h could not be found automatically
-            "--sip-incdir=#{Formula["./sip@6.6.1"].opt_include}",
-            "--qmake=#{Formula["./qt5153"].bin}/qmake",
-            # Force deployment target to avoid libc++ issues
-            "QMAKE_MACOSX_DEPLOYMENT_TARGET=#{MacOS.version}",
-            "--designer-plugindir=#{pkgshare}/plugins",
-            "--qml-plugindir=#{pkgshare}/plugins",
-            "--pyuic5-interpreter=#{Formula["./python@3.10.2"].opt_bin}/python3",
-            "--verbose"]
+    python = Formula["./python@3.10.2"].opt_bin/"python3"
+    site_packages = libexec/Language::Python.site_packages(python)
+    args = %W[
+      --target-dir #{site_packages}
+      --scripts-dir #{bin}
+      --confirm-license
+      --no-designer-plugin
+      --no-qml-plugin
+    ]
+    system "sip-install", *args
 
-    system Formula["#{@tap}/python@3.10.2"].opt_bin/"python3", "configure.py", *args
-    system "make"
-    ENV.deparallelize { system "make", "install" }
+    resource("PyQt5-sip").stage do
+      system python, *Language::Python.setup_install_args(prefix), "--install-lib=#{py}"
+    end
+
+    components = %w[3d chart datavis networkauth purchasing]
+    components << "webengine" if OS.mac? && !Hardware::CPU.arm?
+    components.each do |p|
+      resource(p).stage do
+        inreplace "pyproject.toml", "[tool.sip.project]",
+          "[tool.sip.project]\nsip-include-dirs = [\"#{site_packages}/PyQt#{version.major}/bindings\"]\n"
+        system "sip-install", "--target-dir", site_packages
+      end
+    end
   end
 
   test do
