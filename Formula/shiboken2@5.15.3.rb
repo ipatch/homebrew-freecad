@@ -59,9 +59,9 @@ diff --git a/sources/shiboken2/libshiboken/pep384impl.cpp b/sources/shiboken2/li
 index cb80425..c4e7301 100644
 --- a/sources/shiboken2/libshiboken/pep384impl.cpp
 +++ b/sources/shiboken2/libshiboken/pep384impl.cpp
-@@ -707,6 +707,76 @@ PyObject *PepMapping_Items(PyObject *o)
-  *
-  */
+@@ -707,6 +707,76 @@ * Extra support for name mangling
+ *
+ */
  
 +#if PY_VERSION_HEX >= 0x03000000
 +PyObject *
