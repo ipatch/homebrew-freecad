@@ -34,8 +34,10 @@ class VtkAT910 < Formula
    uses_from_macos "zlib"
 
    def install
-     # Do not record compiler path because it references the shim directory
-     # inreplace "Common/Core/vtkConfigure.h.in", "@CMAKE_CXX_COMPILER@", "clang++"
+     if DevelopmentTools.clang_build_version == 1316 && Hardware::CPU.arm?
+       ENV.remove "HOMEBREW_LIBRARY_PATHS", Formula["llvm"].opt_lib
+       ENV.llvm_clang
+     end
 
      pyver = Language::Python.major_minor_version "python3"
      args = std_cmake_args + %W[
