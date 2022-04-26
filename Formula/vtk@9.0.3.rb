@@ -29,9 +29,9 @@ class VtkAT903 < Formula
    depends_on "lz4"
    depends_on "netcdf"
    depends_on "pugixml"
-   depends_on "./pyqt@5.15.2"
-   depends_on "./python@3.9.7"
-   depends_on "./qt5152"
+   depends_on "./pyqt@5.15.3"
+   depends_on "./python@3.10.2"
+   depends_on "./qt5153"
    depends_on "sqlite"
    depends_on "theora"
    depends_on "utf8cpp"
@@ -77,12 +77,12 @@ class VtkAT903 < Formula
        -DVTK_MODULE_USE_EXTERNAL_VTK_tiff:BOOL=ON
        -DVTK_MODULE_USE_EXTERNAL_VTK_utf8:BOOL=ON
        -DVTK_MODULE_USE_EXTERNAL_VTK_zlib:BOOL=ON
-       -DPython3_EXECUTABLE:FILEPATH=#{Formula["./python@3.9.7"].opt_bin}/python3
+       -DPython3_EXECUTABLE:FILEPATH=#{Formula["./python@3.10.2"].opt_bin}/python3
        -DVTK_GROUP_ENABLE_Qt:STRING=YES
        -DVTK_INSTALL_PYTHON_MODULE_DIR=#{lib}/python#{pyver}/site-packages
        -DVTK_QT_VERSION:STRING=5
        -DVTK_WRAP_PYTHON_SIP=ON
-       -DSIP_PYQT_DIR='#{Formula["./pyqt@5.15.2"].opt_share}/sip'
+       -DSIP_PYQT_DIR='#{Formula["./pyqt@5.15.3"].opt_share}/sip'
      ]
 
      mkdir "build" do
