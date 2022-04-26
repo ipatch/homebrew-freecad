@@ -18,7 +18,6 @@ class PyqtAT5156 < Formula
 
   keg_only "also provided by core"
 
-  depends_on "./pyqtbuilder" => :build
   depends_on "./python@3.10.2"
   depends_on "./qt5153"
   depends_on "./sip@6.6.1"
