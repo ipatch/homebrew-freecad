@@ -35,7 +35,7 @@ class VtkAT910 < Formula
 
    def install
      # Do not record compiler path because it references the shim directory
-     inreplace "Common/Core/vtkConfigure.h.in", "@CMAKE_CXX_COMPILER@", "clang++"
+     # inreplace "Common/Core/vtkConfigure.h.in", "@CMAKE_CXX_COMPILER@", "clang++"
 
      pyver = Language::Python.major_minor_version "python3"
      args = std_cmake_args + %W[
