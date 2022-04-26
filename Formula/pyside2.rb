@@ -15,11 +15,6 @@ class Pyside2 < Formula
   depends_on "./shiboken2@5.15.3"
 
   conflicts_with "pyside@2", because: "non app bundle of freecad could use wrong version"
-  
-  patch do
-    url "https://src.fedoraproject.org/rpms/python-pyside2/raw/1f7e56d4f8320d98e59d9291ddab0451a436c7bf/f/python3.10.patch"
-    sha256 "dd18a7ed1d4196b48ddfd7cf1dcbebe4c600dcedb45baba4c852131e221cf4bc"
-  end
 
   def install
     ENV.cxx11
