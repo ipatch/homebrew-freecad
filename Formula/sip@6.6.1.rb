@@ -71,7 +71,7 @@ class SipAT661 < Formula
     system python, *Language::Python.setup_install_args(prefix), "--install-lib=#{py}"
 
     pth_contents = "import site; site.addsitedir('#{libexec/py}')\n"
-    (prefix/site_packages/"homebrew-sip.pth").write pth_contents
+    (prefix/py/"homebrew-sip.pth").write pth_contents
   end
 
   def post_install
