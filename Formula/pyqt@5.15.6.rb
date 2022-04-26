@@ -63,9 +63,7 @@ class PyqtAT5156 < Formula
     python = Formula["./python@3.10.2"].opt_bin/"python3"
     site_packages = libexec/Language::Python.site_packages(python)
     xy = Language::Python.major_minor_version python
-    ep =  "PYTHONPATH", Formula['./sip@6.6.1'].opt_libexec/"lib/python#{xy}/site-packages;"
-    ep += Formula['./pyqtbuilder'].opt_libexec/"lib/python#{xy}/site-packages;"
-    ENV.prepend_create_path ep
+    ENV.prepend_create_path "PYTHONPATH", Formula['./sip@6.6.1'].opt_libexec/"lib/python#{xy}/site-packages"
     args = %W[
       --target-dir #{site_packages}
       --scripts-dir #{bin}
