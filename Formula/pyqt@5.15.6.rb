@@ -73,7 +73,7 @@ class PyqtAT5156 < Formula
     system "sip-install", *args
 
     resource("PyQt5-sip").stage do
-      system python, *Language::Python.setup_install_args(prefix), "--install-lib=#{py}"
+      system python, *Language::Python.setup_install_args(prefix), "--install-lib=#{site_packages}"
     end
 
     components = %w[3d chart datavis networkauth purchasing]
