@@ -55,13 +55,11 @@ class Shiboken2AT5153 < Formula
 end
 
 __END__
-diff --git a/sources/shiboken2/libshiboken/pep384impl.cpp b/sources/shiboken2/libshiboken/pep384impl.cpp
-index cb80425..c4e7301 100644
---- a/sources/shiboken2/libshiboken/pep384impl.cpp
-+++ b/sources/shiboken2/libshiboken/pep384impl.cpp
-@@ -707,6 +707,76 @@ * Extra support for name mangling
- *
- */
+--- pep384impl.cpp	2022-03-15 08:45:44.000000000 +0100
++++ pep384impl.old	2022-04-26 20:47:52.000000000 +0200
+@@ -707,6 +707,76 @@
+  *
+  */
  
 +#if PY_VERSION_HEX >= 0x03000000
 +PyObject *
