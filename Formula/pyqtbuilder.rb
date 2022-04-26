@@ -1,4 +1,4 @@
-class PyqtBuilder < Formula
+class Pyqtbuilder < Formula
   include Language::Python::Virtualenv
 
   desc "Tool to build PyQt"
