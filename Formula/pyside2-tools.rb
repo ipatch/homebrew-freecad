@@ -1,27 +1,19 @@
 class Pyside2Tools < Formula
   desc "PySide development tools (pyuic and pyrcc)"
   homepage "https://wiki.qt.io/PySide2"
-  url "http://code.qt.io/pyside/pyside-setup.git",
-    tag:      "v5.15.2",
-    revision: "ef19637b7eab165accb8c3b0686061b21745ab74"
+  url "https://download.qt.io/official_releases/QtForPython/pyside2/PySide2-5.15.3-src/pyside-setup-opensource-src-5.15.3.zip"
+  sha256 "ae8517173eb831301791dd864ba73e8c51b9fab67eeb8d2ed76ddfe20377ab03"
   license all_of: ["GFDL-1.3-only", "GPL-2.0-only", "GPL-3.0-only", "LGPL-2.1-only", "LGPL-3.0-only"]
   head "http://code.qt.io/cgit/pyside/pyside-setup.git", branch: "v5.15.2"
 
-  #bottle do
-  #  root_url "https://github.com/freecad/homebrew-freecad/releases/download/07.28.2021"
-  #  sha256 cellar: :any, big_sur:   "d3ab67c4bd9e47f8505b36445c496fca3109aab1a4ad59a0c370734c9001c3c3"
-  #  sha256 cellar: :any, catalina:  "313cdb6754ad9f62abd03e8bfcc9f270bc308a5405fe91a56659d26d420db287"
-  #  sha256 cellar: :any, mojave:    "e922a0334ac11e4bf3948daf91f6d7e13f6df30fc70707e2c845dcc916b6b963"
-  #end
-
   depends_on "cmake" => :build
-  depends_on "./python@3.9.7" => :build
+  depends_on "./python@3.10.2" => :build
   depends_on "./pyside2"
 
   def install
-    mkdir "macbuild3.9" do
+    mkdir "macbuild3.10" do
       args = std_cmake_args
-      args << "-DUSE_PYTHON_VERSION=3.8"
+      args << "-DUSE_PYTHON_VERSION=3.10"
       args << "../sources/pyside2-tools"
 
       system "cmake", *args
