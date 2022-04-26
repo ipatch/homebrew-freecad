@@ -61,16 +61,16 @@ class SipAT661 < Formula
   # end
 
   def install
-    python = Formula["./python@3.10.2"]
-    venv = virtualenv_create(libexec, python.bin/"python3")
+    python = Formula["./python@3.10.2"].opt_bin/"python3"
+    py = libexec/Language::Python.site_packages(python)
+    venv = virtualenv_create(libexec, python)
     resources.each do |r|
       venv.pip_install r
     end
 
-    system python.bin/"python3", *Language::Python.setup_install_args(prefix)
+    system python, *Language::Python.setup_install_args(prefix), "--install-lib=#{py}"
 
-    site_packages = Language::Python.site_packages(python)
-    pth_contents = "import site; site.addsitedir('#{libexec/site_packages}')\n"
+    pth_contents = "import site; site.addsitedir('#{libexec/py}')\n"
     (prefix/site_packages/"homebrew-sip.pth").write pth_contents
   end
 
