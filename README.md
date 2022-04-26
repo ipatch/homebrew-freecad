@@ -66,7 +66,6 @@ brew install -s ageeye/freecad/shiboken2@5.15.3
 ```
 brew install -s ageeye/freecad/pyside2
 brew install -s ageeye/freecad/pyside2-tools
-brew install -s ageeye/freecad/sip@4.19.24
 brew install -s ageeye/freecad/swig@4.0.2
 brew install -s ageeye/freecad/tbb@2020_u3
 brew install -s ageeye/freecad/vtk@9.0.3
