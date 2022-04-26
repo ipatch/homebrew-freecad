@@ -69,8 +69,12 @@ class SipAT661 < Formula
     python = Formula["./python@3.10.2"].opt_bin/"python3"
     py = libexec/Language::Python.site_packages(python)
     venv = virtualenv_create(libexec, python)
-    resources.each do |r|
+    %W[packaging ply pyparsing toml].each do |r|
       venv.pip_install r
+    end
+    
+    resource("pyqtbuilder").stage do
+      system python, *Language::Python.setup_install_args(prefix), "--install-lib=#{py}"
     end
 
     system python, *Language::Python.setup_install_args(prefix), "--install-lib=#{py}"
