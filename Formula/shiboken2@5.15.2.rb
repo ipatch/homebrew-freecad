@@ -24,15 +24,12 @@ class Shiboken2AT5152 < Formula
     sha256 "9d7600f0fff8ed5d3cd2be1313c987a3d31fecdfe2fe14b917fd137c5e5ecf8f"
   end
 
+  patch do
+    url "https://src.fedoraproject.org/rpms/python-pyside2/raw/1f7e56d4f8320d98e59d9291ddab0451a436c7bf/f/python3.10.patch"
+    sha256 "dd18a7ed1d4196b48ddfd7cf1dcbebe4c600dcedb45baba4c852131e221cf4bc"
+  end
+
   def install
-    
-    inreplace './sources/shiboken2/libshiboken/pep384impl.cpp' do |s|
-      s.gsub! 'Py_LIMITED_API', 'PY_VERSION_HEX >= 0x030a0000'
-      s.gsub! 'size_t plen = PyUnicode_GET_LENGTH(privateobj);', 'size_t plen = PyUnicode_GET_LENGTH(privateobj.object());'
-      s.gsub! "while (PyUnicode_READ_CHAR(privateobj, ipriv) == '_')", "while (PyUnicode_READ_CHAR(privateobj.object(), ipriv) == '_')"
-      
-    end
-    
     ENV["LLVM_INSTALL_DIR"] = Formula["./llvm@13.0.0"].opt_prefix
 
     mkdir "macbuild#{version}" do
