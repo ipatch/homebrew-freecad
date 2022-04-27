@@ -32,6 +32,8 @@ class VtkAT910 < Formula
    uses_from_macos "expat"
    uses_from_macos "libxml2"
    uses_from_macos "zlib"
+   
+   fails_with :clang if DevelopmentTools.clang_build_version == 1316 && Hardware::CPU.arm?
 
    def install
      if DevelopmentTools.clang_build_version == 1316 && Hardware::CPU.arm?
@@ -80,11 +82,9 @@ class VtkAT910 < Formula
        -DSIP_PYQT_DIR='#{Formula["./pyqt@5.15.6"].opt_share}/sip'
      ]
 
-     mkdir "build" do
-       system "cmake", "..", *args
-       system "make"
-       system "make", "install"
-     end
+     system "cmake", "-S", ".", "-B", "build", *std_cmake_args, *args
+     system "cmake", "--build", "build"
+     system "cmake", "--install", "build"
    end
 
    test do
