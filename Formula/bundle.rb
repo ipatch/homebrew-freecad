@@ -7,6 +7,8 @@ class Bundle < Formula
     url "file:///dev/null"
     sha256 "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
   end
+  
+  keg_only :versioned_formula 
 
   depends_on "./shiboken2@5.15.3"
   depends_on "./numpy@1.22.3"  
