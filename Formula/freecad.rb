@@ -24,12 +24,12 @@ class Freecad < Formula
   option "with-skip-web", "Disable web"
   option "with-vtk9", "Use the vtk9 toolkit."
   
-  @@vtk = build.with?('vtk9') ? "./vtk@9.0.3" : "./vtk@8.2.0" 
+  @@vtk = build.with?('vtk9') ? "./vtk@9.1.0" : "./vtk@8.2.0" 
 
   depends_on "./swig@4.0.2" => :build
   depends_on "ccache" => :build
   depends_on "cmake" => :build
-  depends_on "./boost-python3@1.76.0"
+  depends_on "./boost-python3@1.78.0"
   depends_on "./boost@1.78.0"
   depends_on "./coin@4.0.0"
   depends_on "./matplotlib"
@@ -40,10 +40,10 @@ class Freecad < Formula
   depends_on "./pivy"
   depends_on "./pyside2"
   depends_on "./pyside2-tools"
-  depends_on "./qt5152"
-  depends_on "./shiboken2@5.15.2"
+  depends_on "./qt5153"
+  depends_on "./shiboken2@5.15.3"
   depends_on @@vtk
-  depends_on "./python@3.9.7"
+  depends_on "./python@3.10.2"
   depends_on "freetype"
   depends_on macos: :high_sierra # no access to sierra test box
   depends_on "open-mpi"
@@ -57,7 +57,7 @@ class Freecad < Formula
   def install
     # system "pip3", "install", "six" unless File.exist?("/usr/local/lib/python3.9/site-packages/six.py")
     # we install six with python 
-    py = Formula["./python@3.9.7"]
+    py = Formula["./python@3.10.2"]
     puts 'Six not found' unless File.exist?("#{py.site_packages}/six.py")
     
     # NOTE: brew clang compilers req, Xcode nowork on macOS 10.13 or 10.14
@@ -85,16 +85,16 @@ class Freecad < Formula
       end
     end
 
-    python_exe = Formula["./python@3.9.7"].opt_prefix/"bin/python3"
-    python_headers = Formula["./python@3.9.7"].opt_prefix/"Frameworks/Python.framework/Headers"
+    python_exe = Formula["./python@3.10.2"].opt_prefix/"bin/python3"
+    python_headers = Formula["./python@3.10.2"].opt_prefix/"Frameworks/Python.framework/Headers"
 
     prefix_paths = ""
-    prefix_paths << (Formula["./qt5152"].lib/"cmake;")
+    prefix_paths << (Formula["./qt5153"].lib/"cmake;")
     prefix_paths << (Formula["./nglib@6.2.2105"].opt_prefix/"Contents/Resources;")
     prefix_paths << (Formula[@@vtk].lib/"cmake;")
     prefix_paths << (Formula["./opencascade@7.5.2"].lib/"cmake;")
     prefix_paths << (Formula["./med-file@4.1.0"].share/"cmake/;")
-    prefix_paths << (Formula["./shiboken2@5.15.2"].lib/"cmake;")
+    prefix_paths << (Formula["./shiboken2@5.15.3"].lib/"cmake;")
     prefix_paths << (Formula["./pyside2"].lib/"cmake;")
     prefix_paths << (Formula["./coin@4.0.0"].lib/"cmake;")
 #    prefix_paths << (Formula["./boost@1.76.0"].lib/"cmake;")
