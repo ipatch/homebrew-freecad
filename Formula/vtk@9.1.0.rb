@@ -37,7 +37,7 @@ class VtkAT910 < Formula
 
    def install
      if DevelopmentTools.clang_build_version == 1316 && Hardware::CPU.arm?
-       ENV.remove "HOMEBREW_LIBRARY_PATHS", Formula["./llvm@13.0.0"].opt_lib
+       ENV.remove "HOMEBREW_LIBRARY_PATHS", Formula["llvm"].opt_lib # ToDo: use own llvm
        ENV.llvm_clang
      end
 
