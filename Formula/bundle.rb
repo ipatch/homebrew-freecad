@@ -9,12 +9,15 @@ class Bundle < Formula
   end
 
   depends_on "./shiboken2@5.15.3"
+  depends_on "./numpy@1.22.3"  
 
 
   def install
     version = "3.10"
     bundle_path = Formula["./shiboken2@5.15.3"].lib/"python#{version}/site-packages"
     #(lib/"python3.10/site-packages/homebrew-shiboken2-bundle.pth").write "#{bundle_path}\n"
+    bundle_path = Formula["./numpy@1.22.3"].libexec/"lib/python#{version}/site-packages"
+    (lib/"python3.10/site-packages/homebrew-numpy-bundle.pth").write "#{bundle_path}\n"
   end
   
 
