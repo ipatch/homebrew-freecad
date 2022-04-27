@@ -142,7 +142,7 @@ class Freecad < Formula
     
     bin.install_symlink "../MacOS/FreeCAD" => "FreeCAD"
     bin.install_symlink "../MacOS/FreeCADCmd" => "FreeCADCmd"
-    (lib/"python3.9/site-packages/homebrew-freecad-bundle.pth").write "#{prefix}/MacOS/\n"
+    (lib/"python3.10/site-packages/homebrew-freecad-bundle.pth").write "#{prefix}/MacOS/\n"
   end
   
   def startup_script
