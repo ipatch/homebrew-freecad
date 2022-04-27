@@ -71,6 +71,10 @@ brew install -s ageeye/freecad/tbb@2020_u3
 brew install -s ageeye/freecad/vtk@9.0.3
 ```
 
+```
+brew install ageeye/freecad/bundle
+```
+
 ## Building macOS App
 
 ```
