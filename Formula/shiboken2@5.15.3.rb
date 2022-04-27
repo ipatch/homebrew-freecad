@@ -29,6 +29,10 @@ class Shiboken2AT5153 < Formula
       py_library = "#{pyhome}/lib/libpython3.10.dylib"
       py_include = "#{pyhome}/include/python3.10"
       args = std_cmake_args
+      version = "3.10"
+      bundle_path = libexec/"lib/python#{version}/site-packages"
+      bundle_path.mkpath
+      
       # Building the tests, is effectively a test of Shiboken
       args << "-DBUILD_TYPE=Release"
       args << "-DBUILD_TESTS:BOOL=OFF"
@@ -39,6 +43,8 @@ class Shiboken2AT5153 < Formula
 
       system "cmake", *args
       system "make", "-j#{ENV.make_jobs}", "install"
+      
+      (lib/"python3.10/site-packages/homebrew-shiboken2-bundle.pth").write "#{bundle_path}\n"
     end
   end
 
