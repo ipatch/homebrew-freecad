@@ -14,7 +14,7 @@ class Bundle < Formula
   def install
     version = "3.10"
     bundle_path = Formula["./shiboken2@5.15.3"].lib/"python#{version}/site-packages"
-    (lib/"python3.10/site-packages/homebrew-shiboken2-bundle.pth").write "#{bundle_path}\n"
+    #(lib/"python3.10/site-packages/homebrew-shiboken2-bundle.pth").write "#{bundle_path}\n"
   end
   
 
