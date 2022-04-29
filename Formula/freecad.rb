@@ -185,8 +185,7 @@ end
 __END__
 --- a/src/Tools/MakeMacBundleRelocatable.py
 +++ b/src/Tools/MakeMacBundleRelocatable.py
-@@ -84,11 +84,14 @@ def visit(self, operation, op_args=[]):
- 
+@@ -84,11 +84,14 @@ 
  
  def is_macho(path):
 -    output = check_output(["file", path])
