@@ -77,6 +77,7 @@ class Freecad < Formula
       gccfra    = Formula['gcc']
       gcctxt    = gccfra.lib.to_s + '/gcc/' + gccfra.version.to_s.split('.')[0]
       inreplace cmakelist do |ln|
+        ln.gsub! 'python2.7', 'python3'
         ln.gsub! '/usr/local', '${HOMEBREW_PREFIX}'  # similar HOMEBREW_PREFIX.to_s 
         ln.gsub! 'Cellar/icu4c', 'Cellar/icu4c@70.1' # formula is renamed with version 
         ln.gsub! 'Cellar/nglib', 'Cellar/nglib@6.2.2105'  # add version to lib 
