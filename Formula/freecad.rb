@@ -185,7 +185,30 @@ end
 __END__
 --- a/src/Tools/MakeMacBundleRelocatable.py
 +++ b/src/Tools/MakeMacBundleRelocatable.py
-@@ -84,11 +84,14 @@ 
+@@ -51,7 +51,7 @@
+     graph = {}
+ 
+     def in_graph(self, node):
+-        return node.name in self.graph.keys()
++        return node.name in list(self.graph)
+ 
+     def add_node(self, node):
+         self.graph[node.name] = node
+@@ -68,10 +68,10 @@
+         """
+         stack = []
+ 
+-        for k in self.graph.keys():
++        for k in list(self.graph):
+             self.graph[k]._marked = False
+ 
+-        for k in self.graph.keys():
++        for k in list(self.graph):
+             if not self.graph[k]._marked:
+                 stack.append(k)
+                 while stack:
+@@ -84,11 +84,14 @@
+ 
  
  def is_macho(path):
 -    output = check_output(["file", path])
@@ -203,7 +226,7 @@ __END__
  
  def is_system_lib(lib):
      for p in systemPaths:
-@@ -109,18 +112,18 @@ def get_path(name, search_paths):
+@@ -109,18 +112,18 @@
  
  def list_install_names(path_macho):
      output = check_output(["otool", "-L", path_macho])
@@ -225,7 +248,25 @@ __END__
          if not is_system_lib(lib):
              libs.append(lib)
      return libs
-@@ -276,7 +279,7 @@ def get_rpaths(library):
+@@ -223,7 +226,7 @@
+                 visited[fpath] = False
+ 
+     stack = []
+-    for k in visited.keys():
++    for k in list(visited):
+         if not visited[k]:
+             stack.append(k)
+             while stack:
+@@ -245,7 +248,7 @@
+                         node.children.append(d.name)
+ 
+                     dk = os.path.join(d.path, d.name)
+-                    if dk not in visited.keys():
++                    if dk not in list(visited):
+                         visited[dk] = False
+                     if not visited[dk]:
+                         stack.append(dk)
+@@ -276,7 +279,7 @@
      pathRegex = r"^path (.*) \(offset \d+\)$"
      expectingRpath = False
      rpaths = []
@@ -234,7 +275,7 @@ __END__
          line = line.strip()
  
          if "cmd LC_RPATH" in line:
-@@ -385,4 +388,4 @@ def main():
+@@ -385,4 +388,4 @@
      logging.info("Done.")
  
  if __name__ == "__main__":
