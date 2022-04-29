@@ -53,6 +53,8 @@ class Freecad < Formula
   depends_on "webp"
   depends_on "xerces-c"
   depends_on "openssl@1.1"
+  
+  patch :DATA
 
   def install
     # system "pip3", "install", "six" unless File.exist?("/usr/local/lib/python3.9/site-packages/six.py")
@@ -179,3 +181,64 @@ class Freecad < Formula
     EOS
   end
 end
+
+__END__
+--- a/src/Tools/MakeMacBundleRelocatable.py
++++ b/src/Tools/MakeMacBundleRelocatable.py
+@@ -84,11 +84,14 @@ def visit(self, operation, op_args=[]):
+ 
+ 
+ def is_macho(path):
+-    output = check_output(["file", path])
+-    if output.count("Mach-O") != 0:
+-        return True
++    return b'Mach-O' in check_output(['file', path])
+ 
+-    return False
++def get_token(txt, delimiter=' (', first=True):
++    result = txt.decode().split(delimiter)
++    if first:
++        return result[0]
++    else:
++        return result
+ 
+ def is_system_lib(lib):
+     for p in systemPaths:
+@@ -109,18 +112,18 @@ def get_path(name, search_paths):
+ 
+ def list_install_names(path_macho):
+     output = check_output(["otool", "-L", path_macho])
+-    lines = output.split("\t")
++    lines = output.split(b"\t")
+     libs = []
+ 
+     #first line is the filename, and if it is a library, the second line
+     #is the install name of it
+-    if path_macho.endswith(os.path.basename(lines[1].split(" (")[0])):
++    if path_macho.endswith(os.path.basename(get_token(lines[1]))):
+         lines = lines[2:]
+     else:
+         lines = lines[1:]
+ 
+     for line in lines:
+-        lib = line.split(" (")[0]
++        lib = get_token(line)
+         if not is_system_lib(lib):
+             libs.append(lib)
+     return libs
+@@ -276,7 +279,7 @@ def get_rpaths(library):
+     pathRegex = r"^path (.*) \(offset \d+\)$"
+     expectingRpath = False
+     rpaths = []
+-    for line in out.split('\n'):
++    for line in get_token(out, '\n', False):
+         line = line.strip()
+ 
+         if "cmd LC_RPATH" in line:
+@@ -385,4 +388,4 @@ def main():
+     logging.info("Done.")
+ 
+ if __name__ == "__main__":
+-    main()
++    main()
+\ No newline at end of file
