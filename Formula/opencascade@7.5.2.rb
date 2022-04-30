@@ -39,6 +39,7 @@ class OpencascadeAT752 < Formula
                     "-DUSE_RAPIDJSON=ON",
                     "-DUSE_TBB=ON",
                     "-DINSTALL_DOC_Overview=ON",
+                    "-DBUILD_RELEASE_DISABLE_EXCEPTIONS=OFF",
                     "-D3RDPARTY_FREEIMAGE_DIR=#{Formula["freeimage"].opt_prefix}",
                     "-D3RDPARTY_FREETYPE_DIR=#{Formula["freetype"].opt_prefix}",
                     "-D3RDPARTY_RAPIDJSON_DIR=#{Formula["rapidjson"].opt_prefix}",
