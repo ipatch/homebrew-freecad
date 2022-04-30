@@ -23,6 +23,7 @@ class Pivy < Formula
     python = Formula["./python@3.10.2"].opt_bin/"python3"
     py = libexec/Language::Python.site_packages(python)
     ENV.prepend_create_path "PYTHONPATH", py
+    system python, "setup.py", "build"
     system python, "setup.py", "install", "--prefix=#{prefix}", "--install-lib=#{py}"
   end
 end
