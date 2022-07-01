@@ -35,85 +35,56 @@ class Qt5155 < Formula
 
 
   resource "qtwebengine" do
-    url "https://code.qt.io/qt/qtwebengine.git",
-        tag:      "v5.15.10-lts",
-        revision: "c7e716ef1ffd63a8ab1f4dbf879230849eb3b505"
+     url "https://code.qt.io/qt/qtwebengine.git",
+         tag:      "v5.15.10-lts",
+         revision: "c7e716ef1ffd63a8ab1f4dbf879230849eb3b505"
 
-    # Add Python 3 support to qt-webengine-chromium.
-    # Submitted upstream here: https://codereview.qt-project.org/c/qt/qtwebengine-chromium/+/416534
-    patch do
-      url "https://raw.githubusercontent.com/Homebrew/formula-patches/7ae178a617d1e0eceb742557e63721af949bd28a/qt5/qt5-webengine-chromium-python3.patch?full_index=1"
-      sha256 "a93aa8ef83f0cf54f820daf5668574cc24cf818fb9589af2100b363356eb6b49"
-      directory "src/3rdparty"
-    end
+     # Add Python 3 support to qt-webengine-chromium.
+     # Submitted upstream here: https://codereview.qt-project.org/c/qt/qtwebengine-chromium/+/416534
+     patch do
+       url "https://raw.githubusercontent.com/Homebrew/formula-patches/7ae178a617d1e0eceb742557e63721af949bd28a/qt5/qt5-webengine-chromium-python3.patch?full_index=1"
+       sha256 "a93aa8ef83f0cf54f820daf5668574cc24cf818fb9589af2100b363356eb6b49"
+       directory "src/3rdparty"
+     end
 
-    # Add Python 3 support to qt-webengine.
-    # Submitted upstream here: https://codereview.qt-project.org/c/qt/qtwebengine/+/416535
-    patch do
-      url "https://raw.githubusercontent.com/Homebrew/formula-patches/a6f16c6daea3b5a1f7bc9f175d1645922c131563/qt5/qt5-webengine-python3.patch?full_index=1"
-      sha256 "398c996cb5b606695ac93645143df39e23fa67e768b09e0da6dbd37342a43f32"
-    end
+     # Add Python 3 support to qt-webengine.
+     # Submitted upstream here: https://codereview.qt-project.org/c/qt/qtwebengine/+/416535
+     patch do
+       url "https://raw.githubusercontent.com/Homebrew/formula-patches/a6f16c6daea3b5a1f7bc9f175d1645922c131563/qt5/qt5-webengine-python3.patch?full_index=1"
+       sha256 "398c996cb5b606695ac93645143df39e23fa67e768b09e0da6dbd37342a43f32"
+     end
 
-    # Fix build of qt-webengine-chromium with newer GCC.
-    # Submitted upstream here: https://codereview.qt-project.org/c/qt/qtwebengine-chromium/+/416598
-    patch do
-      url "https://raw.githubusercontent.com/Homebrew/formula-patches/a6f16c6daea3b5a1f7bc9f175d1645922c131563/qt5/qt5-webengine-gcc12.patch?full_index=1"
-      sha256 "cf9be3ffcc3b3cd9450b1ff13535ff7d76284f73173412d097a6ab487463a379"
-      directory "src/3rdparty"
-    end
-  end
+     # Fix build of qt-webengine-chromium with newer GCC.
+     # Submitted upstream here: https://codereview.qt-project.org/c/qt/qtwebengine-chromium/+/416598
+     patch do
+       url "https://raw.githubusercontent.com/Homebrew/formula-patches/a6f16c6daea3b5a1f7bc9f175d1645922c131563/qt5/qt5-webengine-gcc12.patch?full_index=1"
+       sha256 "cf9be3ffcc3b3cd9450b1ff13535ff7d76284f73173412d097a6ab487463a379"
+       directory "src/3rdparty"
+     end
+   end
 
-  # Update catapult to a revision that supports Python 3.
-  resource "catapult" do
-    url "https://chromium.googlesource.com/catapult.git",
-    revision: "5eedfe23148a234211ba477f76fc2ea2e8529189"
-  end
+   # Update catapult to a revision that supports Python 3.
+   resource "catapult" do
+     url "https://chromium.googlesource.com/catapult.git",
+     revision: "5eedfe23148a234211ba477f76fc2ea2e8529189"
+   end
 
-  # Backport of https://code.qt.io/cgit/qt/qtbase.git/commit/src/plugins/platforms/cocoa?id=dece6f5840463ae2ddf927d65eb1b3680e34a547
-  # to fix the build with Xcode 13.
-  # The original commit is for Qt 6 and cannot be applied cleanly to Qt 5.
-  patch :DATA
+   # Backport of https://code.qt.io/cgit/qt/qtbase.git/commit/src/plugins/platforms/cocoa?id=dece6f5840463ae2ddf927d65eb1b3680e34a547
+   # to fix the build with Xcode 13.
+   # The original commit is for Qt 6 and cannot be applied cleanly to Qt 5.
+   patch :DATA
 
-  # Fix build for GCC 11
-  patch do
-    url "https://invent.kde.org/qt/qt/qtbase/commit/ccc0f5cd016eb17e4ff0db03ffed76ad32c8894d.patch"
-    sha256 "ad97b5dbb13875f95a6d9ffc1ecf89956f8249771a4e485bd5ddcbe0c8ba54e8"
-    directory "qtbase"
-  end
-
-  # Fix build for GCC 11
-  patch do
-    url "https://invent.kde.org/qt/qt/qtdeclarative/commit/8da88589929a1d82103c8bbfa80210f3c1af3714.patch"
-    sha256 "9faedb41c80f23d4776f0be64f796415abd00ef722a318b3f7c1311a8f82e66d"
-    directory "qtdeclarative"
-  end
-
-  # Patch for qmake on ARM
-  # https://codereview.qt-project.org/c/qt/qtbase/+/327649
-  if Hardware::CPU.arm?
-    patch do
-      url "https://raw.githubusercontent.com/Homebrew/formula-patches/9dc732/qt/qt-split-arch.patch"
-      sha256 "36915fde68093af9a147d76f88a4e205b789eec38c0c6f422c21ae1e576d45c0"
-      directory "qtbase"
-    end
-  end
-  
-  # Backport https://code.qt.io/cgit/qt/qtbase.git/commit/src/plugins/platforms/cocoa?id=dece6f5840463ae2ddf927d65eb1b3680e34a547
-  # to fix the build with Xcode 13.
-  # The original commit is for Qt 6 and cannot be applied cleanly to Qt 5.
-  patch :DATA
-
-  # Fix build for GCC 11
+   # Fix build for GCC 11
    patch do
-     url "https://invent.kde.org/qt/qt/qtdeclarative/commit/3c42d4d3dce95b67d65541c5612384eab0c3e27b.patch"
-     sha256 "e8943934af0cea22814b526ca75abf98cacac2d0f86e2b2c9588c694a859f9d2"
-     directory "qtdeclarative"
+     url "https://invent.kde.org/qt/qt/qtbase/commit/ccc0f5cd016eb17e4ff0db03ffed76ad32c8894d.patch"
+     sha256 "ad97b5dbb13875f95a6d9ffc1ecf89956f8249771a4e485bd5ddcbe0c8ba54e8"
+     directory "qtbase"
    end
 
    # Fix build for GCC 11
    patch do
-     url "https://invent.kde.org/qt/qt/qtdeclarative/commit/0eb5ff2e97713e12318c00bab9f3605abb8592c2.patch"
-     sha256 "496241b7810f8073c82b781c7c4addb38a4ec3fbe3e7cafff56b0d0e340e2d5f"
+     url "https://invent.kde.org/qt/qt/qtdeclarative/commit/8da88589929a1d82103c8bbfa80210f3c1af3714.patch"
+     sha256 "9faedb41c80f23d4776f0be64f796415abd00ef722a318b3f7c1311a8f82e66d"
      directory "qtdeclarative"
    end
 
@@ -125,7 +96,7 @@ class Qt5155 < Formula
        sha256 "36915fde68093af9a147d76f88a4e205b789eec38c0c6f422c21ae1e576d45c0"
        directory "qtbase"
      end
-  end
+   end
 
   def install
     rm_r "qtwebengine"
