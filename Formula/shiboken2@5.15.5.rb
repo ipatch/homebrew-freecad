@@ -16,7 +16,7 @@ class Shiboken2AT5155 < Formula
   depends_on "cmake" => :build
   depends_on "./python@3.10.2" => :build
   depends_on "./numpy@1.22.3"
-  depends_on "./qt5153"
+  depends_on "./qt5155"
   depends_on "./llvm@13.0.0"
 
   patch :DATA
