@@ -14,12 +14,14 @@ class Pyside2ToolsAT5155 < Formula
     pyhome = `#{Formula["./python@3.10.2"].opt_bin}/python3.10-config --prefix`.chomp
     py_library = "#{pyhome}/lib/libpython3.10.dylib"
     py_include = "#{pyhome}/include/python3.10"
+    prefix_paths = (Formula["./pyside2@5.15.5"].lib/"cmake;")
     mkdir "macbuild3.10" do
       args = std_cmake_args
       args << "-DUSE_PYTHON_VERSION=3.10"
       args << "-DPYTHON_EXECUTABLE=#{pyhome}/bin/python3.10"
       args << "-DPYTHON_LIBRARY=#{py_library}"
       args << "-DPYTHON_INCLUDE_DIR=#{py_include}"
+       args << "-DCMAKE_PREFIX_PATH=#{prefix_paths}"
       args << "../sources/pyside2-tools"
 
       system "cmake", *args
