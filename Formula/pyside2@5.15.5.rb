@@ -1,4 +1,4 @@
-class Pyside2 < Formula
+class Pyside2AT5155 < Formula
   desc "Python bindings for Qt5 and greater"
   homepage "https://wiki.qt.io/PySide2"
   homepage "https://code.qt.io/cgit/pyside/pyside-setup.git/tree/README.shiboken2-generator.md?h=5.15.2"
