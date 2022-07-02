@@ -36,12 +36,12 @@ class Freecad < Formula
   depends_on "./med-file@4.1.0"
   depends_on "./nglib@6.2.2105"
   depends_on "./opencamlib"
-  depends_on "./opencascade@7.5.2"
+  depends_on "./opencascade@7.6.2"
   depends_on "./pivy"
-  depends_on "./pyside2"
-  depends_on "./pyside2-tools"
-  depends_on "./qt5153"
-  depends_on "./shiboken2@5.15.3"
+  depends_on "./pyside2@5.15.5"
+  depends_on "./pyside2-tools@5.15.5"
+  depends_on "./qt5155"
+  depends_on "./shiboken2@5.15.5"
   depends_on @@vtk
   depends_on "./python@3.10.2"
   depends_on "freetype"
@@ -89,13 +89,13 @@ class Freecad < Formula
     python_headers = Formula["./python@3.10.2"].opt_prefix/"Frameworks/Python.framework/Headers"
 
     prefix_paths = ""
-    prefix_paths << (Formula["./qt5153"].lib/"cmake;")
+    prefix_paths << (Formula["./qt5155"].lib/"cmake;")
     prefix_paths << (Formula["./nglib@6.2.2105"].opt_prefix/"Contents/Resources;")
     prefix_paths << (Formula[@@vtk].lib/"cmake;")
-    prefix_paths << (Formula["./opencascade@7.5.2"].lib/"cmake;")
+    prefix_paths << (Formula["./opencascade@7.6.2"].lib/"cmake;")
     prefix_paths << (Formula["./med-file@4.1.0"].share/"cmake/;")
-    prefix_paths << (Formula["./shiboken2@5.15.3"].lib/"cmake;")
-    prefix_paths << (Formula["./pyside2"].lib/"cmake;")
+    prefix_paths << (Formula["./shiboken2@5.15.5"].lib/"cmake;")
+    prefix_paths << (Formula["./pyside2@5.15.5"].lib/"cmake;")
     prefix_paths << (Formula["./coin@4.0.0"].lib/"cmake;")
 #    prefix_paths << (Formula["./boost@1.76.0"].lib/"cmake;")
 #    prefix_paths << (Formula["./boost-python3@1.76.0"].lib/"cmake;")
