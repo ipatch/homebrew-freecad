@@ -111,7 +111,9 @@ class Qt5155 < Formula
     inreplace "qtwebengine/src/3rdparty/chromium/build/toolchain/mac/BUILD.gn",
         'rebase_path("$clang_base_path/bin/", root_build_dir)', '""'
 
-    
+    # Fix version conflict
+    inreplace "qtwebengine/.qmake.conf", "5.15.10", "5.15.5"
+
     args = %W[
       -verbose
       -prefix #{prefix}
