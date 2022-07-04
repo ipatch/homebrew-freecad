@@ -101,8 +101,8 @@ class Freecad < Formula
 #    prefix_paths << (Formula["./boost-python3@1.76.0"].lib/"cmake;")
 
     # Disable function which are not available for Apple Silicon
-    act = Hardware::CPU.arm? ? "OFF" : "ON"
-    web = build.with?("skip-web") ? "OFF" : act
+    # act = Hardware::CPU.arm? ? "OFF" : "ON"
+    web = build.with?("skip-web") ? "OFF" : "ON"
 
     args = std_cmake_args + %W[
       -DBUILD_QT5=ON
