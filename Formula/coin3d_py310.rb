@@ -50,15 +50,52 @@ class Coin3dPy310 < Formula
   end
 
   def install
-    system "cmake", "-S", ".", "-B", "_build",
-                    "-DCOIN_BUILD_MAC_FRAMEWORK=OFF",
-                    "-DCOIN_BUILD_DOCUMENTATION=ON",
-                    "-DCOIN_BUILD_TESTS=OFF",
-                    "-DCMAKE_CXX_STANDARD=11",
-                    "-L",
-                    *std_cmake_args
-    system "cmake", "--build", "_build"
-    system "cmake", "--install", "_build"
+    # example: current working directory: /opt/tmp/coin3d_py310-20240416-3912-bkxyr6/coin-oldercompilers
+    puts "current working directory: #{Dir.pwd}"
+
+    src_dir = Dir.pwd.to_s
+
+    parent_dir = File.expand_path("..", src_dir)
+
+    build_dir = "#{parent_dir}/build"
+
+    # Create the build directory if it doesn't exist
+    mkdir_p(build_dir)
+
+    # Change the working directory to the build directory
+    # false positive: `warning: conflicting chdir during another chdir block`
+    Dir.chdir(build_dir)
+
+    puts "----------------------------------------------------"
+    puts Dir.pwd
+    puts "----------------------------------------------------"
+
+    osx_sys_root = `xcrun --show-sdk-path`.strip
+
+    args = %W[
+      -DCMAKE_BUILD_TYPE=RelWithDebInfo
+      -DCMAKE_INSTALL_PREFIX=#{prefix}
+      -G Ninja
+      -DCOIN_BUILD_MAC_FRAMEWORK=OFF
+      -DCMAKE_CXX_STANDARD=11
+      -DCOIN_BUILD_DOCUMENTATION=ON
+      -DCOIN_BUILD_DOCUMENTATION_MAN=1
+      -DCMAKE_OSX_SYSROOT=#{osx_sys_root}
+      -L
+    ]
+
+    # -DMACOSX_DEPLOYMENT_TARGET
+    # -DCMAKE_OSX_DEPLOYMENT_TARGET
+    # -DCMAKE_OSX_ARCHITECTURES
+    # -DCMAKE_VERBOSE_MAKEFILE=ON
+    # -DCOIN_VERBOSE=1
+    # "-DCOIN_BUILD_TESTS=OFF",
+    # https://rubydoc.brew.sh/Formula.html#std_cmake_args-instance_method
+    # *std_cmake_args
+
+    system "cmake", *args, src_dir.to_s
+    system "cmake", "--build", build_dir.to_s
+    system "cmake", "--install", build_dir.to_s
 
     resource("pivy").stage do
       ENV.append_path "CMAKE_PREFIX_PATH", prefix.to_s
