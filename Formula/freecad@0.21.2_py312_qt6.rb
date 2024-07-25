@@ -16,6 +16,7 @@ class FreecadAT0212Py312Qt6 < Formula
       sha256 "99d115426cb3e8d7e5ab070e1d726e51eda181ac08768866c6e0fd68cda97f20"
     end
 
+    # NOTE: resource not required for HEAD because a git clone will pull in this resource
     resource "OndselSolver" do
       url "https://github.com/Ondsel-Development/OndselSolver/archive/64e546fe807043d4cdc33be023e521ac0f6449e9.tar.gz"
       sha256 "66c60f09f017d107cd50e92a9e54bd235655cfbc38dd109e91bbbeb8a31634ad"
@@ -87,16 +88,13 @@ class FreecadAT0212Py312Qt6 < Formula
   # end
 
   def install
-    # TODO: need to mv the ondselsolver resource to the correct dir to make cmake happy
-    # (buildpath/"OndselSolver").install resource("OndselSolver")
-    # resource("OndselSolver").stage do
-    #
-    #   target_dir = buildpath/"src/3rdParty/OndselSolver"
-    #   target_dir.mkpath
-    #
-    #   # copy the files
-    #   cp_r ".", target_dir
-    # end
+    # NOTE: mv the ondselsolver resource to the correct dir to make cmake happy
+    resource("OndselSolver").stage do
+      target_dir = buildpath/"src/3rdParty/OndselSolver"
+      target_dir.mkpath
+      # copy the files
+      cp_r ".", target_dir
+    end
 
     hbp = HOMEBREW_PREFIX
 
@@ -178,6 +176,7 @@ class FreecadAT0212Py312Qt6 < Formula
       ]
     }
 
+    # TODO: mv these to the lambda func
     if OS.linux?
       cmake_prefix_paths << Formula["mesa-glu"].prefix
       cmake_prefix_paths << Formula["mesa"].prefix
@@ -313,8 +312,8 @@ class FreecadAT0212Py312Qt6 < Formula
     args.concat(args_linux_only) if OS.linux?
 
     system "cmake", *args, src_dir.to_s
-    # system "cmake", "--build", build_dir.to_s
-    # system "cmake", "--install", build_dir.to_s
+    system "cmake", "--build", build_dir.to_s
+    system "cmake", "--install", build_dir.to_s
   end
 
   def post_install
