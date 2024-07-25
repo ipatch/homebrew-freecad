@@ -52,10 +52,10 @@ class FreecadAT0212Py312Qt6 < Formula
   depends_on "python@3.12" => :build
   depends_on "tbb" => :build
   depends_on "boost"
-  depends_on "fmt"
   depends_on "cups"
   depends_on "cython"
   depends_on "doxygen"
+  depends_on "fmt"
   depends_on "freecad/freecad/coin3d_py310"
   # epends_on "freecad/freecad/fc_bundle"
   depends_on "freecad/freecad/med-file"
