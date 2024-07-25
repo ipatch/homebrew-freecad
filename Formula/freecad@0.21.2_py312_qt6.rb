@@ -278,6 +278,7 @@ class FreecadAT0212Py312Qt6 < Formula
       -DCMAKE_FIND_USE_CMAKE_SYSTEM_PATH=FALSE
 
       -DFREECAD_QT_VERSION=6
+      -DCMAKE_IGNORE_PATH=#{hbp}/lib;#{hbp}/opt/qt@5;#{hbp}/opt/qt@5/include/QtCore;#{hbp}/opt/qt@5/include;
 
       -L
     ]
@@ -296,6 +297,7 @@ class FreecadAT0212Py312Qt6 < Formula
     ENV.remove "PATH", Formula["pyside2@5.15.11_py310"].opt_prefix/"bin"
 
     ENV.remove "PKG_CONFIG_PATH", Formula["pyside@2"].opt_prefix/"lib/pkgconfig"
+    ENV.remove "PKG_CONFIG_PATH", Formula["qt@5"].opt_prefix/"lib/pkgconfig"
 
     # NOTE: ipatch, do not make build dir a sub dir of the src dir
     puts "current working directory: #{Dir.pwd}"
