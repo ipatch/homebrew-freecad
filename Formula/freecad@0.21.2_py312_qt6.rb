@@ -185,7 +185,9 @@ class FreecadAT0212Py312Qt6 < Formula
       cmake_prefix_paths << Formula["libxcb"].prefix
     end
 
-    cmake_prefix_path_string = cmake_prefix_paths.join(";")
+    cmake_prefix_path_string = cmake_prefix_paths.call.join(";")
+
+    puts cmake_prefix_path_string
 
     # Check if Xcode.app exists
     if File.directory?("/Applications/Xcode.app")
