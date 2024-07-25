@@ -88,7 +88,15 @@ class FreecadAT0212Py312Qt6 < Formula
 
   def install
     # TODO: need to mv the ondselsolver resource to the correct dir to make cmake happy
-    (buildpath/"OndselSolver").install resource("OndselSolver")
+    # (buildpath/"OndselSolver").install resource("OndselSolver")
+    # resource("OndselSolver").stage do
+    #
+    #   target_dir = buildpath/"src/3rdParty/OndselSolver"
+    #   target_dir.mkpath
+    #
+    #   # copy the files
+    #   cp_r ".", target_dir
+    # end
 
     hbp = HOMEBREW_PREFIX
 
@@ -131,35 +139,44 @@ class FreecadAT0212Py312Qt6 < Formula
     # ENV.remove "PATH", Formula["pyqt"].opt_prefix/"bin"
     puts "PATH=#{ENV["PATH"]}"
 
-    cmake_prefix_paths = []
-    cmake_prefix_paths << Formula["pybind11_py310"].prefix
-    cmake_prefix_paths << Formula["doxygen"].prefix
-    cmake_prefix_paths << Formula["xerces-c"].prefix
-    cmake_prefix_paths << Formula["zlib"].prefix
-    cmake_prefix_paths << Formula["vtk"].prefix
-    cmake_prefix_paths << Formula["utf8cpp"].prefix
-    cmake_prefix_paths << Formula["glew"].prefix
-    cmake_prefix_paths << Formula["hdf5"].prefix
-    cmake_prefix_paths << Formula["libpng"].prefix
-    cmake_prefix_paths << Formula["pugixml"].prefix
-    cmake_prefix_paths << Formula["eigen"].prefix
-    cmake_prefix_paths << Formula["expat"].prefix
-    cmake_prefix_paths << Formula["double-conversion"].prefix
-    cmake_prefix_paths << Formula["lz4"].prefix
-    cmake_prefix_paths << Formula["xz"].prefix
-    cmake_prefix_paths << Formula["libjpeg-turbo"].prefix
-    cmake_prefix_paths << Formula["libtiff"].prefix
-    cmake_prefix_paths << Formula["medfile"].prefix
-    cmake_prefix_paths << Formula["pkg-config"].prefix
-    cmake_prefix_paths << Formula["boost"].prefix
-    cmake_prefix_paths << Formula["swig@4.1.1"].prefix
-    cmake_prefix_paths << Formula["freetype"].prefix
-    cmake_prefix_paths << Formula["coin3d_py310"].prefix
-    cmake_prefix_paths << Formula["qt"].prefix
-    # cmake_prefix_paths << Formula["open-mpi"].prefix
-    # cmake_prefix_paths << Formula["llvm"].prefix
-    cmake_prefix_paths << Formula["tbb"].prefix
-    cmake_prefix_paths << Formula["icu4c"].prefix
+    cmake_prefix_paths = lambda {
+      [
+        # cmake_prefix_paths << Formula["llvm"].prefix
+        # cmake_prefix_paths << Formula["open-mpi"].prefix
+        Formula["boost"].prefix,
+        Formula["coin3d_py310"].prefix,
+        Formula["cpp-gsl"].prefix,
+        Formula["cups"].prefix,
+        Formula["double-conversion"].prefix,
+        Formula["doxygen"].prefix,
+        Formula["eigen"].prefix,
+        Formula["expat"].prefix,
+        Formula["fmt"].prefix,
+        Formula["freetype"].prefix,
+        Formula["glew"].prefix,
+        Formula["googletest"].prefix,
+        Formula["hdf5"].prefix,
+        Formula["icu4c"].prefix,
+        Formula["libjpeg-turbo"].prefix,
+        Formula["libpng"].prefix,
+        Formula["libtiff"].prefix,
+        Formula["lz4"].prefix,
+        Formula["medfile"].prefix,
+        Formula["opencascade"].prefix,
+        Formula["pkg-config"].prefix,
+        Formula["pugixml"].prefix,
+        Formula["pybind11_py310"].prefix,
+        Formula["qt"].prefix,
+        Formula["swig@4.1.1"].prefix,
+        Formula["tbb"].prefix,
+        Formula["utf8cpp"].prefix,
+        Formula["vtk"].prefix,
+        Formula["xerces-c"].prefix,
+        Formula["xz"].prefix,
+        Formula["yaml-cpp"].prefix,
+        Formula["zlib"].prefix,
+      ]
+    }
 
     if OS.linux?
       cmake_prefix_paths << Formula["mesa-glu"].prefix
@@ -167,14 +184,6 @@ class FreecadAT0212Py312Qt6 < Formula
       cmake_prefix_paths << Formula["libx11"].prefix
       cmake_prefix_paths << Formula["libxcb"].prefix
     end
-
-    cmake_prefix_paths << Formula["yaml-cpp"].prefix
-    cmake_prefix_paths << Formula["opencascade"].prefix
-    cmake_prefix_paths << Formula["cups"].prefix
-    cmake_prefix_paths << Formula["googletest"].prefix
-    cmake_prefix_paths << Formula["cpp-gsl"].prefix
-    # cmake_prefix_paths << Formula["ondselsolver"].prefix
-    cmake_prefix_paths << Formula["fmt"].prefix
 
     cmake_prefix_path_string = cmake_prefix_paths.join(";")
 
@@ -274,6 +283,7 @@ class FreecadAT0212Py312Qt6 < Formula
     # -DCMAKE_IGNORE_PATH=#{hbp}/lib;#{hbp}/include/QtCore;#{hbp}/Cellar/qt;
 
     args << "-DINSTALL_TO_SITEPACKAGES=0"
+    args << "-DFREECAD_USE_EXTERNAL_ONDSELSOLVER=0"
 
     # NOTE: useful cmake debugging args
     # --trace
@@ -301,8 +311,8 @@ class FreecadAT0212Py312Qt6 < Formula
     args.concat(args_linux_only) if OS.linux?
 
     system "cmake", *args, src_dir.to_s
-    system "cmake", "--build", build_dir.to_s
-    system "cmake", "--install", build_dir.to_s
+    # system "cmake", "--build", build_dir.to_s
+    # system "cmake", "--install", build_dir.to_s
   end
 
   def post_install
