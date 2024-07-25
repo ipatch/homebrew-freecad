@@ -291,6 +291,9 @@ class FreecadAT0212Py312Qt6 < Formula
     # -L
 
     ENV.remove "PATH", Formula["pyside@2"].opt_prefix/"bin"
+    ENV.remove "PATH", Formula["qt@5"].opt_prefix/"bin"
+    ENV.remove "PATH", Formula["shiboken2@5.15.11_py310"].opt_prefix/"bin"
+    ENV.remove "PATH", Formula["pyside2@5.15.11_py310"].opt_prefix/"bin"
 
     ENV.remove "PKG_CONFIG_PATH", Formula["pyside@2"].opt_prefix/"lib/pkgconfig"
 
