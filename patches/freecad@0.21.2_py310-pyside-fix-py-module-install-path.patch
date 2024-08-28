@@ -1,0 +1,48 @@
+commit 1eee33bae4f126f03d9a1349049140e83923a09b
+Author: chris <chris.r.jones.1983@gmail.com>
+Date:   Wed Aug 28 19:38:10 2024 -0400
+
+    freecad@0.21.2_py310: attempt to fix proxy PySide install path
+
+diff --git a/cMake/FreeCAD_Helpers/SetupShibokenAndPyside.cmake b/cMake/FreeCAD_Helpers/SetupShibokenAndPyside.cmake
+index 7556a25a89..0470ec90b7 100644
+--- a/cMake/FreeCAD_Helpers/SetupShibokenAndPyside.cmake
++++ b/cMake/FreeCAD_Helpers/SetupShibokenAndPyside.cmake
+@@ -96,20 +96,28 @@ macro(SetupShibokenAndPyside)
+         endif()
+     endif()
+ 
+-    if(APPLE AND NOT BUILD_WITH_CONDA)
+-        install(
++    # NOTE: ipatch, update path for proxy PySide py module
++    if(APPLE AND DEFINED HOMEBREW_PREFIX AND NOT BUILD_WITH_CONDA)
++      install(
+         DIRECTORY
+-            ${CMAKE_BINARY_DIR}/Ext/PySide
++        ${CMAKE_BINARY_DIR}/Ext/PySide
+         DESTINATION
+-            MacOS
+-        )
++        Ext
++      )
++    elseif(APPLE AND NOT BUILD_WITH_CONDA)
++      install(
++        DIRECTORY
++        ${CMAKE_BINARY_DIR}/Ext/PySide
++        DESTINATION
++        MacOS
++      )
+     else()
+-        install(
++      install(
+         DIRECTORY
+-            ${CMAKE_BINARY_DIR}/Ext/PySide
++        ${CMAKE_BINARY_DIR}/Ext/PySide
+         DESTINATION
+-            Ext
+-        )
++        Ext
++      )
+     endif()
+ 
+     # If shiboken cannot be found the build option will be set to OFF
