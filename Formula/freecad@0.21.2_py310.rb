@@ -38,6 +38,13 @@ class FreecadAT0212Py310 < Formula
       url "https://raw.githubusercontent.com/FreeCAD/homebrew-freecad/b510bf8a0feba8b3d75e121a2fe32fa697a6fef5/patches/freecad%400.21.2_py310-boost-dep-errors.patch"
       sha256 "535316c559a1fb1bd6fab0287c12fcc6ccd6c5b065bbe339207c2bb98fa600b6"
     end
+
+
+    # NOTE: ipatch, ie. local patch `url "file:///#{HOMEBREW_PREFIX}/Library/Taps/freecad/homebrew-freecad/patches/`
+    patch do
+      url "file:///#{HOMEBREW_PREFIX}/Library/Taps/freecad/homebrew-freecad/patches/freecad@0.21.2_py310-pyside-fix-py-module-install-path.patch"
+      sha256 ""
+    end
   end
 
   bottle do
@@ -331,11 +338,11 @@ class FreecadAT0212Py310 < Formula
 
   def post_install
     if OS.mac?
-      ohai "the value of prefix = #{prefix}"
+      ohai "the formula install prefix path = #{prefix}"
       ln_s "#{prefix}/MacOS/FreeCAD", "#{HOMEBREW_PREFIX}/bin/freecad", force: true
       ln_s "#{prefix}/MacOS/FreeCADCmd", "#{HOMEBREW_PREFIX}/bin/freecadcmd", force: true
     elsif OS.linux?
-      ohai "the value of prefix = #{prefix}"
+      ohai "the formula install prefix path = #{prefix}"
       ln_s "#{bin}/FreeCAD", "#{HOMEBREW_PREFIX}/bin/freecad", force: true
       ln_s "#{bin}/FreeCADCmd", "#{HOMEBREW_PREFIX}/bin/freecadcmd", force: true
     end
