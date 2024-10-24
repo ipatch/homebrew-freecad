@@ -23,7 +23,7 @@ class Pyside6Py312 < Formula
   depends_on "cmake" => :build
   depends_on "ninja" => :build
   depends_on "python-setuptools" => :build
-  epends_on xcode: :build
+  depends_on xcode: :build
   depends_on "gettext" => :test # req for linking against -lintl
   depends_on "llvm"
   depends_on "python@3.12"
