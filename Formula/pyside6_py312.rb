@@ -25,9 +25,11 @@ class Pyside6Py312 < Formula
   depends_on "python-setuptools" => :build
   depends_on xcode: :build
   depends_on "gettext" => :test # req for linking against -lintl
+  depends_on "freecad/freecad/numpy@2.1.1_py312"
   depends_on "llvm"
   depends_on "python@3.12"
   depends_on "qt"
+  depends_on "sphinx-doc"
 
   uses_from_macos "libxml2"
   uses_from_macos "libxslt"
@@ -84,13 +86,31 @@ class Pyside6Py312 < Formula
     cmake_args << "-DPYTHON_EXECUTABLE=#{py_exe}"
     cmake_args << "-DPYTHON_LIBRARY=#{py_lib}"
 
+    ENV.prepend_path "CMAKE_PREFIX_PATH", Formula["python@3.12"].opt_prefix
+    ENV.prepend_path "CMAKE_PREFIX_PATH", Formula["numpy@2.1.1_py312"].opt_prefix
+
     # Avoid shim reference
     inreplace "sources/shiboken6/ApiExtractor/CMakeLists.txt", "${CMAKE_CXX_COMPILER}", ENV.cxx
+
+    py313bin_pth = Formula["python@3.13"].opt_bin.to_s
+    py313libexecbin_pth = Formula["python@3.13"].opt_prefix/"libexec/bin"
+
+    # remove python@3.13 references from the PATH env var
+    ENV["PATH"] = ENV["PATH"].gsub("#{py313bin_pth}:", "")
+    ENV["PATH"] = ENV["PATH"].gsub("#{py313libexecbin_pth}:", "")
+
+    puts "-------------------------------------------------"
+    puts "PYTHONPATH=#{ENV["PYTHONPATH"]}"
+    puts "CFLAGS=#{ENV["CFLAGS"]}"
+    puts "PATH=#{ENV["PATH"]}"
+    puts "PATH Datatype: #{ENV["PATH"].class}"
+    puts "CMAKE_PREFIX_PATH=#{ENV["CMAKE_PREFIX_PATH"]}"
+    puts "-------------------------------------------------"
 
     system "cmake", "-S", ".", "-B", "build",
                      "-DCMAKE_INSTALL_RPATH=#{lib}",
                      "-DCMAKE_PREFIX_PATH=#{Formula["qt"].opt_lib}",
-                     "-DPYTHON_EXECUTABLE=#{which(python3)}",
+                     "-DPYTHON_EXECUTABLE=#{py_exe}",
                      "-DBUILD_TESTS=OFF",
                      "-DNO_QT_TOOLS=yes",
                      "-DFORCE_LIMITED_API=no",
