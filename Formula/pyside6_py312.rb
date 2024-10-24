@@ -70,6 +70,20 @@ class Pyside6Py312 < Formula
     # Install python scripts into pkgshare rather than bin
     inreplace "sources/pyside-tools/CMakeLists.txt", "DESTINATION bin", "DESTINATION #{pkgshare}"
 
+    cmake_args = std_cmake_args
+
+    # NOTE: ipatch build will fail if using `python3` cmake requires major+minor ie. `python3.10`
+    py_exe = Formula["python@3.12"].opt_bin/"python3.12"
+
+    py_lib = if OS.mac?
+               Formula["python@3.12"].opt_lib/"libpython3.12.dylib"
+             else
+               Formula["python@3.12"].opt_lib/"libpython3.12.so"
+             end
+
+    cmake_args << "-DPYTHON_EXECUTABLE=#{py_exe}"
+    cmake_args << "-DPYTHON_LIBRARY=#{py_lib}"
+
     # Avoid shim reference
     inreplace "sources/shiboken6/ApiExtractor/CMakeLists.txt", "${CMAKE_CXX_COMPILER}", ENV.cxx
 
@@ -80,10 +94,25 @@ class Pyside6Py312 < Formula
                      "-DBUILD_TESTS=OFF",
                      "-DNO_QT_TOOLS=yes",
                      "-DFORCE_LIMITED_API=no",
-                     *std_cmake_args
+                     *cmake_args
 
     system "cmake", "--build", "build"
     system "cmake", "--install", "build"
+  end
+
+  def post_install
+    # explicitly set python version
+    python_version = "3.12"
+
+    # Unlink the existing .pth file to avoid reinstall issues
+    pth_file = lib/"python#{python_version}/pyside6.pth"
+    pth_file.unlink if pth_file.exist?
+
+    ohai "Creating .pth file for pyside6 module"
+    # write the .pth file to the parent dir of site-packages
+    (lib/"python#{python_version}/pyside6.pth").write <<~EOS
+    import site; site.addsitedir('#{lib}/python#{python_version}/site-packages/')
+    EOS
   end
 
   def caveats
