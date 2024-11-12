@@ -256,6 +256,7 @@ class FreecadAT0212Py310 < Formula
         -D_Qt5UiTools_RELEASE_IOKit_PATH=#{apl_frmwks}/IOKit.framework
         -D_Qt5UiTools_RELEASE_OpenGL_PATH=#{apl_frmwks}/OpenGL.framework
         -D_Qt5UiTools_RELEASE_AGL_PATH=#{apl_frmwks}/AGL.framework
+        -DFREECAD_CREATE_MAC_APP=1
       ]
     end
 
