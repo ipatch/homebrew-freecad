@@ -1,4 +1,4 @@
-class FreecadAT100Rc2Py312 < Formula
+class FreecadAT100Py312 < Formula
   desc "Parametric 3D modeler"
   homepage "https://www.freecadweb.org"
   license "GPL-2.0-only"
@@ -11,8 +11,8 @@ class FreecadAT100Rc2Py312 < Formula
     sha256 "4ed61d1a91039e5ad465bc19313bc95422d93b52b0135c63b628e59778d29512"
 
     patch do
-      url "https://raw.githubusercontent.com/FreeCAD/homebrew-freecad/95e5aa838ae8b5e7d4fd6ddd710bc53c8caedddc/patches/freecad-0.20.2-cmake-find-hdf5.patch"
-      sha256 "99d115426cb3e8d7e5ab070e1d726e51eda181ac08768866c6e0fd68cda97f20"
+      url "https://raw.githubusercontent.com/FreeCAD/homebrew-freecad/e78eeda91a16658ce4954114b5fdb85b7e72e774/patches/freecad%400.21.2_py310-hdf5-fix-cmake-reruns.patch"
+      sha256 "b1becbdc867e96aa1bfe8d8fd1c1b01053b2ce5d1d9483cd0ed19b2d2c6f387f"
     end
 
     # NOTE: ipatch, building the rc2 tag of freecad requires the resources due the new use of git submodules
