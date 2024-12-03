@@ -9,6 +9,7 @@ class FreecadAT100Rc2Py312 < Formula
   stable do
     url "https://github.com/FreeCAD/FreeCAD/archive/refs/tags/1.0rc2.tar.gz"
     sha256 "4ed61d1a91039e5ad465bc19313bc95422d93b52b0135c63b628e59778d29512"
+
     patch do
       url "https://raw.githubusercontent.com/FreeCAD/homebrew-freecad/95e5aa838ae8b5e7d4fd6ddd710bc53c8caedddc/patches/freecad-0.20.2-cmake-find-hdf5.patch"
       sha256 "99d115426cb3e8d7e5ab070e1d726e51eda181ac08768866c6e0fd68cda97f20"
@@ -230,6 +231,8 @@ class FreecadAT100Rc2Py312 < Formula
         -D_Qt5UiTools_RELEASE_IOKit_PATH=#{apl_frmwks}/IOKit.framework
         -D_Qt5UiTools_RELEASE_OpenGL_PATH=#{apl_frmwks}/OpenGL.framework
         -D_Qt5UiTools_RELEASE_AGL_PATH=#{apl_frmwks}/AGL.framework
+
+        -DCMAKE_IGNORE_PATH=#{hbp}/lib;#{hbp}/include/QtCore;#{hbp}/Cellar/qt;
       ]
     end
 
@@ -270,8 +273,6 @@ class FreecadAT100Rc2Py312 < Formula
 
       -DCMAKE_FIND_USE_SYSTEM_ENVIRONMENT_PATH=FALSE
       -DCMAKE_FIND_USE_CMAKE_SYSTEM_PATH=FALSE
-
-      -DCMAKE_IGNORE_PATH=#{hbp}/lib;#{hbp}/include/QtCore;#{hbp}/Cellar/qt;
 
       -L
     ]
