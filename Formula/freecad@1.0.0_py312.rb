@@ -45,14 +45,13 @@ class FreecadAT100Py312 < Formula
 
   depends_on "cmake" => :build
   depends_on "freecad/freecad/swig@4.2.1" => :build
-  depends_on "gcc" => :build
+  depends_on "gcc" => :build # gfortran req for FEM WB
   depends_on "hdf5" => :build
   depends_on "llvm" => :build if OS.linux?
   depends_on "mesa" => :build if OS.linux?
   depends_on "ninja" => :build if OS.linux?
   depends_on "pkg-config" => :build
   depends_on "python@3.12" => :build
-  depends_on "tbb" => :build
   depends_on "boost"
   depends_on "cython"
   depends_on "doxygen"
@@ -73,6 +72,7 @@ class FreecadAT100Py312 < Formula
   depends_on "opencascade"
   depends_on "orocos-kdl"
   depends_on "qt@5"
+  depends_on "tbb"
   depends_on "vtk"
   depends_on "webp"
   depends_on "xerces-c"
@@ -336,6 +336,10 @@ class FreecadAT100Py312 < Formula
        copied executables and libraries into a FreeCAD.app
        bundle. Until a fix or work around is made freecad
        is built for CLI by default now.
+
+    2. presently the freecad py module is globally accessible, ie.
+       one cannot directly run `import freecad` from a python v3.12
+       repl
     EOS
   end
 
