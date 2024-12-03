@@ -32,19 +32,12 @@ class FreecadAT100Py312 < Formula
     end
   end
 
-  bottle do
-    root_url "https://ghcr.io/v2/freecad/freecad"
-    rebuild 3
-    sha256 cellar: :any, arm64_sonoma: "72573af7aabd86e8ab5b6c6d686d0f821c464170e5ca4032873d4a9e5a4d6bd2"
-    sha256 cellar: :any, ventura:      "87a2d7dda581c628285d49c8cc88404f1b59d6ea798d0d238001d46a2ba5d4e0"
-  end
-
   head do
     url "https://github.com/freecad/FreeCAD.git", branch: "main", shallow: false
 
     patch do
-      url "https://raw.githubusercontent.com/FreeCAD/homebrew-freecad/95e5aa838ae8b5e7d4fd6ddd710bc53c8caedddc/patches/freecad-0.20.2-cmake-find-hdf5.patch"
-      sha256 "99d115426cb3e8d7e5ab070e1d726e51eda181ac08768866c6e0fd68cda97f20"
+      url "https://raw.githubusercontent.com/FreeCAD/homebrew-freecad/e78eeda91a16658ce4954114b5fdb85b7e72e774/patches/freecad%400.21.2_py310-hdf5-fix-cmake-reruns.patch"
+      sha256 "b1becbdc867e96aa1bfe8d8fd1c1b01053b2ce5d1d9483cd0ed19b2d2c6f387f"
     end
   end
 
