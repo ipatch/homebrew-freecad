@@ -7,15 +7,15 @@ class FreecadAT100Py312 < Formula
   # run `brew cleanup` when editing local patch files on each subsequent `brew install`
   #---
   stable do
-    url "https://github.com/FreeCAD/FreeCAD/archive/refs/tags/1.0rc2.tar.gz"
-    sha256 "4ed61d1a91039e5ad465bc19313bc95422d93b52b0135c63b628e59778d29512"
+    url "https://github.com/FreeCAD/FreeCAD/archive/refs/tags/1.0.0.tar.gz"
+    sha256 "51115afd8e3b89f4bac343b986b0800d8e1c68fc1e322c3cd179cfe1033ef937"
 
     patch do
       url "https://raw.githubusercontent.com/FreeCAD/homebrew-freecad/e78eeda91a16658ce4954114b5fdb85b7e72e774/patches/freecad%400.21.2_py310-hdf5-fix-cmake-reruns.patch"
       sha256 "b1becbdc867e96aa1bfe8d8fd1c1b01053b2ce5d1d9483cd0ed19b2d2c6f387f"
     end
 
-    # NOTE: ipatch, building the rc2 tag of freecad requires the resources due the new use of git submodules
+    # NOTE: ipatch, building rc2 >= tags of freecad require resource blocks due to the use of git submodules
     resource "ondselsolver" do
       url "https://github.com/Ondsel-Development/OndselSolver/archive/889196e3267597127b5889572b0c86f9316e16f0.tar.gz"
       sha256 "83124c67971e7322b553599cf5883bb28cceffe0efde7e8524c090adc3d94b6e"
@@ -235,6 +235,7 @@ class FreecadAT100Py312 < Formula
       clang_cxx = Formula["llvm"].opt_bin/"clang++"
       clang_ld = Formula["llvm"].opt_bin/"lld"
       clang_ar = Formula["llvm"].opt_bin/"llvm-ar"
+
       openglu_inc_dir = Formula["mesa-glu"].opt_include
 
       puts "----------------------------------------------------"
