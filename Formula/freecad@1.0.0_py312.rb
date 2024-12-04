@@ -44,6 +44,11 @@ class FreecadAT100Py312 < Formula
       url "https://raw.githubusercontent.com/FreeCAD/homebrew-freecad/e78eeda91a16658ce4954114b5fdb85b7e72e774/patches/freecad%400.21.2_py310-hdf5-fix-cmake-reruns.patch"
       sha256 "b1becbdc867e96aa1bfe8d8fd1c1b01053b2ce5d1d9483cd0ed19b2d2c6f387f"
     end
+
+    patch do
+      url "https://raw.githubusercontent.com/FreeCAD/homebrew-freecad/1fde4f693950d77e8617c08921d50c1aba3f0a56/patches/freecad-0.20.2-cmake-find-xercesc.patch"
+      sha256 "adb30f5d723672d1d54db4a236bce8a85e9bc9d0667ef88a7360e4cae1bb27c9"
+    end
   end
 
   keg_only :versioned_formula
@@ -84,6 +89,7 @@ class FreecadAT100Py312 < Formula
   depends_on "yaml-cpp"
   depends_on "zlib"
 
+  # TODO: attempt to install without patch
   patch do
     url "https://raw.githubusercontent.com/FreeCAD/homebrew-freecad/a979a1011bb1d911c2c26db9b663b04862b8b950/patches/freecad%401.0.0_rc2_py312-fix-pyside-path-issue.patch"
     sha256 "c312676f490a9850691cc47ced760849bd440d20f0fdbefcac42b613f5873a2f"
