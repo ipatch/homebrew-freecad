@@ -374,7 +374,20 @@ class FreecadAT101Py312 < Formula
     # NOTE: resources have to be in the correct buildpath
     resource("googletest").stage(buildpath/"tests/lib")
     resource("msgsl").stage(buildpath/"src/3rdParty/GSL")
+
+    # NOTE: ipatch, ondselsolver requires patching on arch linux, see github issue 684
     resource("ondselsolver").stage(buildpath/"src/3rdParty/OndselSolver")
+
+    # Now patch in-place at the destination
+    header_path = buildpath/"src/3rdParty/OndselSolver/OndselSolver/NewtonRaphson.h"
+    if header_path.exist?
+      opoo "Patching #{header_path} to add missing <limits> include"
+      inreplace header_path do |s|
+        s.gsub!(/^#include\s+<.*>$/, '\0' + "\n#include <limits>") unless s.to_s.include?("<limits>")
+      end
+    else
+      odie "Expected OndselSolver header not found at final location"
+    end
 
     args.concat(args_macos_only) if OS.mac?
     args.concat(args_linux_only) if OS.linux?
