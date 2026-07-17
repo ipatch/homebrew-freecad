@@ -7,7 +7,7 @@ class CalculixAT223 < Formula
   url "https://www.dhondt.de/ccx_2.23.src.tar.bz2"
   version "2.23"
   sha256 "9c88385c10fb04f5dc6c4e98027a51bebdd8aee3920e05190d6c1dd08357d6e7"
-  revision "1"
+  revision 1
 
   bottle do
     root_url "https://ghcr.io/v2/freecad/freecad"
