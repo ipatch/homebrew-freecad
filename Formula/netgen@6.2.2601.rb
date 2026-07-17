@@ -8,6 +8,7 @@ class NetgenAT622601 < Formula
     tag: "v6.2.2601"
   license "LGPL-2.1-only"
   head "https://github.com/ngsolve/netgen.git", branch: "master"
+  revision 1
 
   bottle do
     root_url "https://ghcr.io/v2/freecad/freecad"
