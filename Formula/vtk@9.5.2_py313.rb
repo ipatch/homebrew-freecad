@@ -9,10 +9,11 @@ class VtkAT952Py313 < Formula
 
   bottle do
     root_url "https://ghcr.io/v2/freecad/freecad"
-    sha256 cellar: :any,                 arm64_tahoe:   "39eee490c8021a6d0f24b916bac76c227407ef43e8d93fc3a577e3e5d86edfde"
-    sha256 cellar: :any,                 arm64_sequoia: "c1d77e599d2dcca21d5c4cb1d73447f18643b9ece72d07e3e5ef86caeaff123a"
-    sha256 cellar: :any,                 arm64_sonoma:  "4c202fac8a5637166a26be165cf6a5dc918d205074d81a6859526e02ee52de08"
-    sha256 cellar: :any_skip_relocation, x86_64_linux:  "69731ea70043038bcf2898a95dd14e6a889d3134d8ae2678338167926d1fa3f6"
+    sha256 cellar: :any, arm64_tahoe:   "c1544a1aeed398bbabfa8a67acef18ac6f75f4b3454444974a8cf2669764339b"
+    sha256 cellar: :any, arm64_sequoia: "463c6feb00f5a153c0d99c92a9d7e5733b4375b007c53bdfe174f24b44a8f8e4"
+    sha256 cellar: :any, arm64_sonoma:  "b6c323e76bc2751728547e7eed8021b2750666c9ecc09d853019aeb51d0a2f53"
+    sha256 cellar: :any, arm64_linux:   "1d343666615f143e979d57a6fbf6c11821a6a30098a0c8498a63ea277a453ec4"
+    sha256 cellar: :any, x86_64_linux:  "a206d838db5b984754c548372d264759442d5069cad3377f86e7e5ca32ba9084"
   end
 
   keg_only :versioned_formula
