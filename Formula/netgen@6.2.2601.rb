@@ -7,6 +7,7 @@ class NetgenAT622601 < Formula
   url "https://github.com/ngsolve/netgen.git",
     tag: "v6.2.2601"
   license "LGPL-2.1-only"
+  revision 1
   head "https://github.com/ngsolve/netgen.git", branch: "master"
 
   bottle do
