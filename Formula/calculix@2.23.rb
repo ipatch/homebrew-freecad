@@ -11,10 +11,11 @@ class CalculixAT223 < Formula
 
   bottle do
     root_url "https://ghcr.io/v2/freecad/freecad"
-    sha256 cellar: :any,                 arm64_tahoe:   "fb04b0417f9fffb65c05cd2271cb97dff01d430f4e9c5e7dc5bbfc5a3adc74b5"
-    sha256 cellar: :any,                 arm64_sequoia: "018b5c8c36de6eb5dab7a0c8c372c2c85e573b3fc896ff386f7a7155cee93e7f"
-    sha256 cellar: :any,                 arm64_sonoma:  "8074146ebd2a5634f6554cbdf3891e6a5c1aea9c797e1aa7660147ec0042dd4f"
-    sha256 cellar: :any_skip_relocation, x86_64_linux:  "8f06dea19dab57fd9f04dc7a4fdc256126e13e7cc8b16eba9808c439eb6bb298"
+    sha256 cellar: :any, arm64_tahoe:   "b1137518bedc19117ad41dc70ea8b5de59df048b55e0828ea866df9f4903191e"
+    sha256 cellar: :any, arm64_sequoia: "e78bb220d2b7e0d5d38349137a26df33e25f2d881a5d350d54baa0d8145227b4"
+    sha256 cellar: :any, arm64_sonoma:  "c57512c811fcb9a67513add9a7eedbafb8df4fe532352e2d2ef03cb6b0346815"
+    sha256 cellar: :any, arm64_linux:   "f5146ccb5ba6411cfdd508aeae0bbe2ad25a62947da6da41a0ff0a1151b87a58"
+    sha256 cellar: :any, x86_64_linux:  "a3de572ee261cda6cb659063f569c606b48b3d260367e6c7c025a4e3653579c8"
   end
 
   depends_on "autoconf" => :build
