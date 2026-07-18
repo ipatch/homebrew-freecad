@@ -34,9 +34,11 @@ class Coin3dAT408Py313Qt6 < Formula
 
   bottle do
     root_url "https://ghcr.io/v2/freecad/freecad"
-    sha256 cellar: :any, arm64_tahoe:   "b1b48c2903002359fb0cc58c77c5486957766fd6606b93a2704b04586621fab5"
-    sha256 cellar: :any, arm64_sequoia: "142ff0e02767a63d99f5504ed3fdf0f227cd9e1a091b85f2174bf0f260f1ffca"
-    sha256 cellar: :any, arm64_sonoma:  "027442922866ff4fd05cc5ec09cf56b822bd291232afc4f5454695fd2ba9b2c2"
+    sha256 cellar: :any, arm64_tahoe:   "dea228a6cda67a3f1b3fd8d946e87820137f7ae545c18103d40adf0086977a58"
+    sha256 cellar: :any, arm64_sequoia: "b2d6e00da449bec16c5432e6b10988a24d89449cc177248978099fcbc27178f5"
+    sha256 cellar: :any, arm64_sonoma:  "4081f13f8efa8203cdf42119477ab63ecff92fd394a94c20d01ebdee58b7a9c9"
+    sha256 cellar: :any, arm64_linux:   "fd18231eb213ac3af2ca270bbef938722e6f3c920ce6707a3114d47c90313456"
+    sha256 cellar: :any, x86_64_linux:  "89dc8f00e3828e0813bbe2fa0f16c53e9f50a14139d8cfcddee23729c12cbac6"
   end
 
   head do
