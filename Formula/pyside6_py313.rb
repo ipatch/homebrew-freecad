@@ -18,7 +18,7 @@ class Pyside6Py313 < Formula
     { "GPL-3.0-only" => { with: "Qt-GPL-exception-1.0" } },
     { any_of: ["LGPL-3.0-only", "GPL-2.0-only", "GPL-3.0-only"] },
   ]
-  revision 3
+  revision 4
 
   livecheck do
     url "https://download.qt.io/official_releases/QtForPython/pyside6/"
